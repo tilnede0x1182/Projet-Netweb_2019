@@ -1,0 +1,21 @@
+Changement de la base de donnée :
+
+Changer simplement les valeurs contenues dans VARIABLES_CONSTANTES.php
+
+Bugs possibles (A faire) : 
+
+Lorsque le protocole SNMP ne renvoie pas de réponse, le temps d'attente et d'au moins 30 sec.
+-> Trouver un moyen de diminuer ce temps ou programmer cette partie en Javascript
+pour discocier le temps d'affichage des informations provenant de la BDD de celles données
+via SNMP.
+
+- Mettre en place un selecteur pour choisir la méthiode de recherche (et éviter ainsi d'afficher
+  toutes les méthode tout le temps).
+- Ajouter la même méthode de recherche que Netweb(avec des selecteurs identiques à Netweb).
+  (éventuellement) : colorier les résultats en fonction du type de matériel (pc, imprimante, etc...)
+  comme dans Netweb.
+
+Activation de SNMP pour PHP :
+
+Installer snmp2 séparément de Wamp.
+Décommenter la ligne extension=php_snmp.dll dans php.ini
