@@ -8,7 +8,7 @@
 // Importations
 // ==============================================================================
 
-include 'Interroge la base.php';
+include 'Intéroge la base.php';
 include 'renvoie_objet_snmp.php';
 include 'Fonctions_utilitaires.php';
 include 'fonctions_utilitaires_appliquees.php';
@@ -37,7 +37,7 @@ function base_de_donnees($bdd_base, $user, $mdp, $host) {
 	$port_2 = trim(htmlspecialchars($_POST['port_2']), " \t\n\r\0\x0B");
 	$port_bdd = "stk-254".remplit_nombre_zeros($stk, 3)."[".remplit_nombre_zeros($port_1, 2)."/".remplit_nombre_zeros($port_2, 2)."]";
 	if ($port_bdd != null) {
-		$requette = 'select iph_name as Nom, ipa_addr as IP, iph_ether as MAC, iph_gpsnum as Nom_inventaire, iph_type as Type, iph_dnsstate as DNS, iph_ug as UG, iph_affect as Affectation, iph_desc as Description, iph_location as Emplacement, iph_switchport as Port, iph_lastupdated as Derniere_connection from '.$bdd.".ip_host, ".$bdd.'.ip_address where ipa_client=iph_client and iph_switchport="'.$port_bdd.'";';
+		$requette = 'select iph_name as Nom, ipa_addr as IP, iph_ether as MAC, iph_gpsnum as Nom_inventaire, iph_type as Type, iph_dnsstate as DNS, iph_ug as UG, iph_affect as Affectation, iph_desc as Description, iph_location as Emplacement, iph_switchport as Port, iph_lastupdated as Derniere_connection from `'.$bdd.'`.ip_host, `'.$bdd.'`.ip_address where ipa_client=iph_client and iph_switchport="'.$port_bdd.'";';
 		$res = interroge_la_base($bdd, $requette, $user, $mdp, $host);
 		return $res;
 	}

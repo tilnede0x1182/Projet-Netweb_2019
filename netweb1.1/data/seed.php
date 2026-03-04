@@ -12,21 +12,21 @@
 // ==============================================================================
 
 $EQUIPEMENTS = [
-	['name' => 'router-core-01', 'domain' => 'network.local', 'ip' => '192.168.1.1', 'community' => 'public', 'version' => 2, 'description' => 'Routeur principal du reseau'],
-	['name' => 'router-backup-01', 'domain' => 'network.local', 'ip' => '192.168.1.2', 'community' => 'public', 'version' => 2, 'description' => 'Routeur de secours'],
-	['name' => 'switch-dist-01', 'domain' => 'network.local', 'ip' => '192.168.1.10', 'community' => 'public', 'version' => 2, 'description' => 'Switch de distribution niveau 1'],
-	['name' => 'switch-dist-02', 'domain' => 'network.local', 'ip' => '192.168.1.11', 'community' => 'public', 'version' => 2, 'description' => 'Switch de distribution niveau 2'],
-	['name' => 'switch-access-01', 'domain' => 'network.local', 'ip' => '192.168.1.20', 'community' => 'private', 'version' => 1, 'description' => 'Switch acces batiment A'],
-	['name' => 'switch-access-02', 'domain' => 'network.local', 'ip' => '192.168.1.21', 'community' => 'private', 'version' => 1, 'description' => 'Switch acces batiment B'],
-	['name' => 'switch-access-03', 'domain' => 'network.local', 'ip' => '192.168.1.22', 'community' => 'private', 'version' => 1, 'description' => 'Switch acces batiment C'],
-	['name' => 'srv-web-01', 'domain' => 'servers.local', 'ip' => '192.168.2.10', 'community' => 'public', 'version' => 2, 'description' => 'Serveur web principal'],
-	['name' => 'srv-db-01', 'domain' => 'servers.local', 'ip' => '192.168.2.20', 'community' => 'private', 'version' => 3, 'description' => 'Serveur base de donnees'],
-	['name' => 'srv-mail-01', 'domain' => 'servers.local', 'ip' => '192.168.2.30', 'community' => 'public', 'version' => 2, 'description' => 'Serveur mail'],
-	['name' => 'srv-file-01', 'domain' => 'servers.local', 'ip' => '192.168.2.40', 'community' => 'public', 'version' => 2, 'description' => 'Serveur de fichiers'],
-	['name' => 'fw-ext-01', 'domain' => 'security.local', 'ip' => '192.168.0.1', 'community' => 'private', 'version' => 3, 'description' => 'Firewall externe'],
-	['name' => 'fw-int-01', 'domain' => 'security.local', 'ip' => '192.168.0.2', 'community' => 'private', 'version' => 3, 'description' => 'Firewall interne'],
-	['name' => 'printer-rdc-01', 'domain' => 'periph.local', 'ip' => '192.168.3.10', 'community' => 'public', 'version' => 1, 'description' => 'Imprimante RDC'],
-	['name' => 'printer-etage1-01', 'domain' => 'periph.local', 'ip' => '192.168.3.11', 'community' => 'public', 'version' => 1, 'description' => 'Imprimante Etage 1']
+	['name' => 'srv-web-01', 'domain' => 'servers.local', 'ip' => '192.168.1.1', 'mac' => '00:1A:2B:3C:4D:01', 'gpsnum' => 'INV-SRV-001', 'type' => 'Serveur', 'dns' => 'active', 'ug' => 'IT', 'affect' => 'Production', 'desc' => 'Serveur web principal', 'location' => 'Datacenter A1', 'switchport' => 'stk-254001[01/01]'],
+	['name' => 'srv-db-01', 'domain' => 'servers.local', 'ip' => '192.168.1.2', 'mac' => '00:1A:2B:3C:4D:02', 'gpsnum' => 'INV-SRV-002', 'type' => 'Serveur', 'dns' => 'active', 'ug' => 'IT', 'affect' => 'Production', 'desc' => 'Serveur base de donnees', 'location' => 'Datacenter A2', 'switchport' => 'stk-254001[01/02]'],
+	['name' => 'srv-mail-01', 'domain' => 'servers.local', 'ip' => '192.168.1.3', 'mac' => '00:1A:2B:3C:4D:03', 'gpsnum' => 'INV-SRV-003', 'type' => 'Serveur', 'dns' => 'active', 'ug' => 'IT', 'affect' => 'Production', 'desc' => 'Serveur mail', 'location' => 'Datacenter A3', 'switchport' => 'stk-254001[01/03]'],
+	['name' => 'router-core', 'domain' => 'network.local', 'ip' => '192.168.1.10', 'mac' => '00:1A:2B:3C:4D:10', 'gpsnum' => 'INV-RTR-001', 'type' => 'Routeur', 'dns' => 'active', 'ug' => 'Reseau', 'affect' => 'Infrastructure', 'desc' => 'Routeur principal', 'location' => 'Salle reseau', 'switchport' => 'stk-254001[02/01]'],
+	['name' => 'switch-dist-01', 'domain' => 'network.local', 'ip' => '192.168.1.11', 'mac' => '00:1A:2B:3C:4D:11', 'gpsnum' => 'INV-SWT-001', 'type' => 'Switch', 'dns' => 'active', 'ug' => 'Reseau', 'affect' => 'Infrastructure', 'desc' => 'Switch distribution', 'location' => 'Salle reseau', 'switchport' => 'stk-254001[02/02]'],
+	['name' => 'switch-access-01', 'domain' => 'network.local', 'ip' => '192.168.1.12', 'mac' => '00:1A:2B:3C:4D:12', 'gpsnum' => 'INV-SWT-002', 'type' => 'Switch', 'dns' => 'active', 'ug' => 'Reseau', 'affect' => 'Infrastructure', 'desc' => 'Switch acces Bat A', 'location' => 'Batiment A', 'switchport' => 'stk-254001[02/03]'],
+	['name' => 'fw-ext-01', 'domain' => 'security.local', 'ip' => '192.168.1.20', 'mac' => '00:1A:2B:3C:4D:20', 'gpsnum' => 'INV-FW-001', 'type' => 'Firewall', 'dns' => 'active', 'ug' => 'Securite', 'affect' => 'Perimetre', 'desc' => 'Firewall externe', 'location' => 'DMZ', 'switchport' => 'stk-254002[01/01]'],
+	['name' => 'pc-admin-01', 'domain' => 'workstations.local', 'ip' => '192.168.2.1', 'mac' => '00:1A:2B:3C:5D:01', 'gpsnum' => 'INV-PC-001', 'type' => 'PC', 'dns' => 'active', 'ug' => 'Admin', 'affect' => 'Bureau 101', 'desc' => 'PC administrateur', 'location' => 'Bureau 101', 'switchport' => 'stk-254003[01/01]'],
+	['name' => 'pc-compta-01', 'domain' => 'workstations.local', 'ip' => '192.168.2.2', 'mac' => '00:1A:2B:3C:5D:02', 'gpsnum' => 'INV-PC-002', 'type' => 'PC', 'dns' => 'active', 'ug' => 'Compta', 'affect' => 'Bureau 102', 'desc' => 'PC comptabilite', 'location' => 'Bureau 102', 'switchport' => 'stk-254003[01/02]'],
+	['name' => 'pc-rh-01', 'domain' => 'workstations.local', 'ip' => '192.168.2.3', 'mac' => '00:1A:2B:3C:5D:03', 'gpsnum' => 'INV-PC-003', 'type' => 'PC', 'dns' => 'active', 'ug' => 'RH', 'affect' => 'Bureau 103', 'desc' => 'PC ressources humaines', 'location' => 'Bureau 103', 'switchport' => 'stk-254003[01/03]'],
+	['name' => 'printer-rdc', 'domain' => 'periph.local', 'ip' => '192.168.3.1', 'mac' => '00:1A:2B:3C:6D:01', 'gpsnum' => 'INV-PRT-001', 'type' => 'Imprimante', 'dns' => 'active', 'ug' => 'Services', 'affect' => 'RDC', 'desc' => 'Imprimante RDC', 'location' => 'Couloir RDC', 'switchport' => 'stk-254003[02/01]'],
+	['name' => 'printer-etage1', 'domain' => 'periph.local', 'ip' => '192.168.3.2', 'mac' => '00:1A:2B:3C:6D:02', 'gpsnum' => 'INV-PRT-002', 'type' => 'Imprimante', 'dns' => 'active', 'ug' => 'Services', 'affect' => 'Etage 1', 'desc' => 'Imprimante Etage 1', 'location' => 'Couloir Etage 1', 'switchport' => 'stk-254003[02/02]'],
+	['name' => 'ap-wifi-01', 'domain' => 'network.local', 'ip' => '192.168.4.1', 'mac' => '00:1A:2B:3C:7D:01', 'gpsnum' => 'INV-AP-001', 'type' => 'Borne WiFi', 'dns' => 'active', 'ug' => 'Reseau', 'affect' => 'Sans fil', 'desc' => 'Borne WiFi RDC', 'location' => 'Hall RDC', 'switchport' => 'stk-254002[02/01]'],
+	['name' => 'ap-wifi-02', 'domain' => 'network.local', 'ip' => '192.168.4.2', 'mac' => '00:1A:2B:3C:7D:02', 'gpsnum' => 'INV-AP-002', 'type' => 'Borne WiFi', 'dns' => 'active', 'ug' => 'Reseau', 'affect' => 'Sans fil', 'desc' => 'Borne WiFi Etage 1', 'location' => 'Hall Etage 1', 'switchport' => 'stk-254002[02/02]'],
+	['name' => 'nas-backup', 'domain' => 'storage.local', 'ip' => '192.168.5.1', 'mac' => '00:1A:2B:3C:8D:01', 'gpsnum' => 'INV-NAS-001', 'type' => 'NAS', 'dns' => 'active', 'ug' => 'IT', 'affect' => 'Sauvegarde', 'desc' => 'NAS de sauvegarde', 'location' => 'Datacenter B1', 'switchport' => 'stk-254001[03/01]']
 ];
 
 // ==============================================================================
@@ -34,7 +34,7 @@ $EQUIPEMENTS = [
 // ==============================================================================
 
 /**
-	Point d'entree du script.
+	Point d entree du script.
 	Cree les tables et insere les equipements.
 */
 function main() {
@@ -58,22 +58,35 @@ function main() {
 	// Insertion des equipements
 	global $EQUIPEMENTS;
 	$usersTxt = "=== EQUIPEMENTS RESEAU ===\n\n";
-	$usersTxt .= sprintf("%-20s %-20s %-15s %-15s %s\n", "NOM", "DOMAINE", "IP", "COMMUNAUTE", "VERSION");
-	$usersTxt .= str_repeat("-", 90) . "\n";
+	$usersTxt .= sprintf("%-18s %-15s %-20s %s\n", "NOM", "IP", "MAC", "INVENTAIRE");
+	$usersTxt .= str_repeat("-", 75) . "\n";
 
 	foreach ($EQUIPEMENTS as $equipement) {
 		$name = mysqli_real_escape_string($connexion, $equipement['name']);
 		$domain = mysqli_real_escape_string($connexion, $equipement['domain']);
 		$ip = mysqli_real_escape_string($connexion, $equipement['ip']);
-		$community = mysqli_real_escape_string($connexion, $equipement['community']);
-		$version = (int) $equipement['version'];
-		$description = mysqli_real_escape_string($connexion, $equipement['description']);
+		$mac = mysqli_real_escape_string($connexion, $equipement['mac']);
+		$gpsnum = mysqli_real_escape_string($connexion, $equipement['gpsnum']);
+		$type = mysqli_real_escape_string($connexion, $equipement['type']);
+		$dns = mysqli_real_escape_string($connexion, $equipement['dns']);
+		$ug = mysqli_real_escape_string($connexion, $equipement['ug']);
+		$affect = mysqli_real_escape_string($connexion, $equipement['affect']);
+		$desc = mysqli_real_escape_string($connexion, $equipement['desc']);
+		$location = mysqli_real_escape_string($connexion, $equipement['location']);
+		$switchport = mysqli_real_escape_string($connexion, $equipement['switchport']);
 
-		$sql = "INSERT INTO ip_host (iph_name, iph_domain, iph_ip, iph_community, iph_version, iph_description)
-				VALUES ('$name', '$domain', '$ip', '$community', $version, '$description')";
+		// Insertion dans ip_host
+		$sql = "INSERT INTO ip_host (iph_name, iph_domain, iph_ether, iph_gpsnum, iph_type, iph_dnsstate, iph_ug, iph_affect, iph_desc, iph_location, iph_switchport)
+				VALUES ('$name', '$domain', '$mac', '$gpsnum', '$type', '$dns', '$ug', '$affect', '$desc', '$location', '$switchport')";
+		mysqli_query($connexion, $sql);
+		$client_id = mysqli_insert_id($connexion);
+
+		// Insertion dans ip_address
+		$sql = "INSERT INTO ip_address (ipa_addr, ipa_client, ipa_vlanid, ipa_status, ipa_dhcp)
+				VALUES ('$ip', $client_id, 100, 'allocated', 'true')";
 		mysqli_query($connexion, $sql);
 
-		$usersTxt .= sprintf("%-20s %-20s %-15s %-15s %d\n", $name, $domain, $ip, $community, $version);
+		$usersTxt .= sprintf("%-18s %-15s %-20s %s\n", $name, $ip, $mac, $gpsnum);
 	}
 
 	echo "Equipements inseres: " . count($EQUIPEMENTS) . "\n";

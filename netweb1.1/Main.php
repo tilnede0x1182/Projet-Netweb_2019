@@ -8,7 +8,7 @@
 // Importations
 // ==============================================================================
 
-include 'Interroge la base.php';
+include 'Intéroge la base.php';
 include 'renvoie_objet_snmp.php';
 include 'Fonctions_utilitaires.php';
 include 'fonctions_utilitaires_appliquees.php';

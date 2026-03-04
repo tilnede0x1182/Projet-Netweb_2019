@@ -8,7 +8,7 @@
 // Importations
 // ==============================================================================
 
-include 'Interroge la base.php';
+include 'Intéroge la base.php';
 include 'renvoie_objet_snmp.php';
 include 'Fonctions_utilitaires.php';
 include 'fonctions_utilitaires_appliquees.php';
@@ -34,7 +34,7 @@ function base_de_donnees($bdd_base, $user, $mdp, $host) {
 	$bdd = $bdd_base;
 	$var = trim(htmlspecialchars($_POST['entree_user']), " \t\n\r\0\x0B");
 	if ($var != null) {
-		$requette = 'select iph_name as Nom, ipa_addr as IP, iph_ether as MAC, iph_gpsnum as Nom_inventaire, iph_type as Type, iph_dnsstate as DNS, iph_ug as UG, iph_affect as Affectation, iph_desc as Description, iph_location as Emplacement, iph_switchport as Port, iph_lastupdated as Derniere_connection from '.$bdd.".ip_host, ".$bdd.'.ip_address where ipa_client=iph_client and (iph_name="'.$var.'" OR iph_gpsnum="'.$var.'" OR iph_ether="'.$var.'" OR ipa_addr="'.$var.'");';
+		$requette = 'select iph_name as Nom, ipa_addr as IP, iph_ether as MAC, iph_gpsnum as Nom_inventaire, iph_type as Type, iph_dnsstate as DNS, iph_ug as UG, iph_affect as Affectation, iph_desc as Description, iph_location as Emplacement, iph_switchport as Port, iph_lastupdated as Derniere_connection from `'.$bdd.'`.ip_host, `'.$bdd.'`.ip_address where ipa_client=iph_client and (iph_name="'.$var.'" OR iph_gpsnum="'.$var.'" OR iph_ether="'.$var.'" OR ipa_addr="'.$var.'");';
 		$res = interroge_la_base($bdd, $requette, $user, $mdp, $host);
 		return $res;
 	}

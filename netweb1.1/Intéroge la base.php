@@ -1,6 +1,7 @@
 <?php
 /**
 	Fonction de connexion et interrogation de la base de donnees MySQL.
+	Utilise mysqli (PHP 7+).
 */
 
 // ==============================================================================
@@ -18,30 +19,26 @@
 	@return array Tableau associatif des resultats
 */
 function interroge_la_base($bdd, $requette, $bdd_user, $bdd_mdp, $bdd_adresse_hote) {
-	if (!$link = mysql_connect($bdd_adresse_hote, $bdd_user, $bdd_mdp)) {
-		echo 'Connexion impossible a mysql';
+	$link = mysqli_connect($bdd_adresse_hote, $bdd_user, $bdd_mdp, $bdd);
+	if (!$link) {
+		echo 'Connexion impossible a mysql: ' . mysqli_connect_error();
 		exit;
 	}
 
-	if (!mysql_select_db($bdd, $link)) {
-		echo 'Selection de base de donnees impossible';
-		exit;
-	}
-
-	$sql = $requette;
-	$result = mysql_query($sql, $link);
+	$result = mysqli_query($link, $requette);
 
 	if (!$result) {
 		echo "Erreur DB, impossible d effectuer une requete\n";
-		echo 'Erreur MySQL : ' . mysql_error();
+		echo 'Erreur MySQL : ' . mysqli_error($link);
 		exit;
 	}
 
 	$res = array();
-	while ($row = mysql_fetch_assoc($result)) {
+	while ($row = mysqli_fetch_assoc($result)) {
 		array_push($res, $row);
 	}
-	mysql_free_result($result);
+	mysqli_free_result($result);
+	mysqli_close($link);
 	return $res;
 }
 
