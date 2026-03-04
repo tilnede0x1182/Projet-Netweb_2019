@@ -7,6 +7,9 @@
 // Donnees
 // ==============================================================================
 
+// Chemin racine URL (pour les liens CSS/images dans le HTML)
+$root_url = '/netweb/';
+
 // Titre de la page
 $titre_page = "Informations sur les equipements informatiques";
 

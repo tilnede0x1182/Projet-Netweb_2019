@@ -1,6 +1,6 @@
 <?php
 /**
-	Traitement du formulaire de recherche par stack et port.
+	Traitement du formulaire de recherche par IP/nom/MAC/inventaire.
 	Interroge la base de donnees et affiche les resultats enrichis par SNMP.
 */
 
@@ -8,21 +8,21 @@
 // Importations
 // ==============================================================================
 
-include 'Intéroge la base.php';
-include 'renvoie_objet_snmp.php';
-include 'Fonctions_utilitaires.php';
-include 'fonctions_utilitaires_appliquees.php';
-include 'Affiche_html.php';
-include 'Affiche_page_html.php';
-include 'Demande_utilisateur.php';
-include 'VARIABLES_CONSTANTES.php';
+include '../../utils/includes/connexion_db.php';
+include '../../utils/snmp/simulation_snmp.php';
+include '../../utils/includes/fonctions_affichage.php';
+include '../../utils/includes/fonctions_snmp.php';
+include '../../utils/templates/affichage_resultats.php';
+include '../../utils/templates/structure_page.php';
+include '../../utils/templates/formulaire.php';
+include '../../utils/includes/config.php';
 
 // ==============================================================================
 // Fonctions principales
 // ==============================================================================
 
 /**
-	Interroge la base de donnees avec les criteres stack et port.
+	Interroge la base de donnees avec le critere de recherche utilisateur.
 
 	@param bdd_base Nom de la base de donnees
 	@param user Utilisateur MySQL
@@ -32,12 +32,9 @@ include 'VARIABLES_CONSTANTES.php';
 */
 function base_de_donnees($bdd_base, $user, $mdp, $host) {
 	$bdd = $bdd_base;
-	$stk = trim(htmlspecialchars($_POST['stk']), " \t\n\r\0\x0B");
-	$port_1 = trim(htmlspecialchars($_POST['port_1']), " \t\n\r\0\x0B");
-	$port_2 = trim(htmlspecialchars($_POST['port_2']), " \t\n\r\0\x0B");
-	$port_bdd = "stk-254".remplit_nombre_zeros($stk, 3)."[".remplit_nombre_zeros($port_1, 2)."/".remplit_nombre_zeros($port_2, 2)."]";
-	if ($port_bdd != null) {
-		$requette = 'select iph_name as Nom, ipa_addr as IP, iph_ether as MAC, iph_gpsnum as Nom_inventaire, iph_type as Type, iph_dnsstate as DNS, iph_ug as UG, iph_affect as Affectation, iph_desc as Description, iph_location as Emplacement, iph_switchport as Port, iph_lastupdated as Derniere_connection from `'.$bdd.'`.ip_host, `'.$bdd.'`.ip_address where ipa_client=iph_client and iph_switchport="'.$port_bdd.'";';
+	$var = trim(htmlspecialchars($_POST['entree_user']), " \t\n\r\0\x0B");
+	if ($var != null) {
+		$requette = 'select iph_name as Nom, ipa_addr as IP, iph_ether as MAC, iph_gpsnum as Nom_inventaire, iph_type as Type, iph_dnsstate as DNS, iph_ug as UG, iph_affect as Affectation, iph_desc as Description, iph_location as Emplacement, iph_switchport as Port, iph_lastupdated as Derniere_connection from `'.$bdd.'`.ip_host, `'.$bdd.'`.ip_address where ipa_client=iph_client and (iph_name="'.$var.'" OR iph_gpsnum="'.$var.'" OR iph_ether="'.$var.'" OR ipa_addr="'.$var.'");';
 		$res = interroge_la_base($bdd, $requette, $user, $mdp, $host);
 		return $res;
 	}

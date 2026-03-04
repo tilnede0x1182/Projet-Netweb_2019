@@ -4,6 +4,6 @@
 	Redirige vers Main.php.
 */
 
-include 'Main.php';
+include 'index_old.php';
 
 ?>

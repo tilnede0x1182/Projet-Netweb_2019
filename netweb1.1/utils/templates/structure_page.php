@@ -21,7 +21,8 @@ function affiche_debut_page_html() {
 */
 function affiche_titre_page_html($title) {
 	echo "\t\t".'<title>'.$title.'</title>'."\n";
-	echo "\t\t".'<link rel="stylesheet" type="text/css" href="Page.css">'."\n";
+	global $root_url;
+	echo "\t\t".'<link rel="stylesheet" type="text/css" href="'.$root_url.'assets/css/style.css">'."\n";
 }
 
 /**

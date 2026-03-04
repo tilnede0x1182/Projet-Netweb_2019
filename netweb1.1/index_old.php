@@ -8,15 +8,15 @@
 // Importations
 // ==============================================================================
 
-include 'Intéroge la base.php';
-include 'renvoie_objet_snmp.php';
-include 'Fonctions_utilitaires.php';
-include 'fonctions_utilitaires_appliquees.php';
-include 'Affiche_html.php';
-include 'Affiche_page_html.php';
-include 'Demande_utilisateur.php';
-include 'Tests.php';
-include 'VARIABLES_CONSTANTES.php';
+include 'utils/includes/connexion_db.php';
+include 'utils/snmp/simulation_snmp.php';
+include 'utils/includes/fonctions_affichage.php';
+include 'utils/includes/fonctions_snmp.php';
+include 'utils/templates/affichage_resultats.php';
+include 'utils/templates/structure_page.php';
+include 'utils/templates/formulaire.php';
+// include 'Tests.php'; // Fichier non migré
+include 'utils/includes/config.php';
 
 // ==============================================================================
 // Fonctions principales
