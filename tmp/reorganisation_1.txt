@@ -1,0 +1,98 @@
+Tree réorganisation Netweb - 2026-03-05
+=======================================
+
+AVANT (anciens chemins) -> APRES (nouveaux chemins)
+===================================================
+
+Page.css                                -> assets/css/style.css
+
+Action.php                              -> src/pages/RechercheEquipement.php
+Action2.php                             -> src/pages/RecherchePort.php
+
+VARIABLES_CONSTANTES.php                -> utils/includes/config.php
+Fonctions_utilitaires.php               -> utils/includes/fonctions_affichage.php
+fonctions_utilitaires_appliquees.php    -> utils/includes/fonctions_snmp.php
+Intéroge la base.php                    -> utils/includes/connexion_db.php
+
+Demande_utilisateur.php                 -> utils/templates/formulaire.php
+Affiche_html.php                        -> utils/templates/affichage_resultats.php
+Affiche_page_html.php                   -> utils/templates/structure_page.php
+
+renvoie_objet_snmp.php                  -> utils/snmp/simulation_snmp.php
+
+Main.php                                -> index_old.php
+
+Page type.html                          -> archives/Page_type.html
+READ-ME.txt                             -> archives/READ-ME.txt
+info_script.php                         -> archives/info_script.php
+Index of -Projet Netweb ameliore.url    -> archives/Index_Projet_Netweb.url
+../Sauvegarde BDD Netweb.txt            -> archives/Sauvegarde_BDD_Netweb.txt
+../Echéancier du projet.xlsx            -> archives/Echeancier_projet.xlsx
+../A_faire.md                           -> archives/A_faire.md
+
+TREE ACTUEL (après réorganisation)
+==================================
+
+Projet-Netweb_2019/
+├── README.md
+│
+└── netweb1.1/
+    ├── index.php
+    ├── index_old.php
+    │
+    ├── assets/
+    │   └── css/
+    │       └── style.css
+    │
+    ├── src/
+    │   └── pages/
+    │       ├── RechercheEquipement.php
+    │       └── RecherchePort.php
+    │
+    ├── utils/
+    │   ├── includes/
+    │   │   ├── config.php
+    │   │   ├── connexion_db.php
+    │   │   ├── fonctions_affichage.php
+    │   │   └── fonctions_snmp.php
+    │   ├── templates/
+    │   │   ├── formulaire.php
+    │   │   ├── affichage_resultats.php
+    │   │   └── structure_page.php
+    │   └── snmp/
+    │       └── simulation_snmp.php
+    │
+    ├── data/
+    │   ├── create_tables.sql
+    │   ├── seed.php
+    │   └── users.txt
+    │
+    ├── archives/
+    │   ├── A_faire.md
+    │   ├── Echeancier_projet.xlsx
+    │   ├── Index_Projet_Netweb.url
+    │   ├── info_script.php
+    │   ├── Page_type.html
+    │   ├── READ-ME.txt
+    │   └── Sauvegarde_BDD_Netweb.txt
+    │
+    └── tmp/
+        └── reorganisation_1.txt
+
+MAPPING DES CHEMINS (pour mise à jour des includes/liens)
+=========================================================
+
+ANCIEN                                  NOUVEAU
+------                                  -------
+Page.css                                assets/css/style.css
+Action.php                              src/pages/RechercheEquipement.php
+Action2.php                             src/pages/RecherchePort.php
+VARIABLES_CONSTANTES.php                utils/includes/config.php
+Fonctions_utilitaires.php               utils/includes/fonctions_affichage.php
+fonctions_utilitaires_appliquees.php    utils/includes/fonctions_snmp.php
+Intéroge la base.php                    utils/includes/connexion_db.php
+Demande_utilisateur.php                 utils/templates/formulaire.php
+Affiche_html.php                        utils/templates/affichage_resultats.php
+Affiche_page_html.php                   utils/templates/structure_page.php
+renvoie_objet_snmp.php                  utils/snmp/simulation_snmp.php
+Main.php                                index_old.php
