@@ -1,14 +1,22 @@
 <?php
+/**
+	Variables et constantes de configuration de l application.
+*/
 
-$titre_page="Informations sur les équipements informatiques";
+// ==============================================================================
+// Donnees
+// ==============================================================================
 
-//### Connection à la base de données ###
-$bdd_adresse_hote="localhost";
-$bdd_user="user1";
-$bdd_mdp="1234";
-$bdd_base="snmp1";
+// Titre de la page
+$titre_page = "Informations sur les equipements informatiques";
 
-//### SNMP ##############################
-$communaute_cst="jferry";
+// Connexion a la base de donnees
+$bdd_adresse_hote = "localhost";
+$bdd_user = "tilnede0x1182";
+$bdd_mdp = "tilnede0x1182";
+$bdd_base = "netweb1.1";
+
+// Configuration SNMP
+$communaute_cst = "public";
 
 ?>

@@ -1,0 +1,19 @@
+=== EQUIPEMENTS RESEAU ===
+
+NOM                  DOMAINE              IP              COMMUNAUTE      VERSION
+------------------------------------------------------------------------------------------
+router-core-01       network.local        192.168.1.1     public          2
+router-backup-01     network.local        192.168.1.2     public          2
+switch-dist-01       network.local        192.168.1.10    public          2
+switch-dist-02       network.local        192.168.1.11    public          2
+switch-access-01     network.local        192.168.1.20    private         1
+switch-access-02     network.local        192.168.1.21    private         1
+switch-access-03     network.local        192.168.1.22    private         1
+srv-web-01           servers.local        192.168.2.10    public          2
+srv-db-01            servers.local        192.168.2.20    private         3
+srv-mail-01          servers.local        192.168.2.30    public          2
+srv-file-01          servers.local        192.168.2.40    public          2
+fw-ext-01            security.local       192.168.0.1     private         3
+fw-int-01            security.local       192.168.0.2     private         3
+printer-rdc-01       periph.local         192.168.3.10    public          1
+printer-etage1-01    periph.local         192.168.3.11    public          1
