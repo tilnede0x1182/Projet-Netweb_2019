@@ -1,11 +1,11 @@
 <?php
 /**
-	Script de seed pour la base de donnees netweb1.1.
-	Genere 15 equipements reseau pour les tests SNMP.
-
-	Usage :
-		php seed.php
-*/
+ * Script de seed pour la base de donnees netweb1.1.
+ * Genere 15 equipements reseau pour les tests SNMP.
+ * 
+ * Usage :
+ * php seed.php
+ */
 
 // ==============================================================================
 // Donnees
@@ -34,11 +34,11 @@ $EQUIPEMENTS = [
 // ==============================================================================
 
 /**
-	Extrait les numeros stack/port du format switchport.
-
-	@param string $switchport Format stk-254XXX[YY/ZZ]
-	@return array [stack, port1, port2]
-*/
+ * Extrait les numeros stack/port du format switchport.
+ * 
+ * @param string $switchport Format stk-254XXX[YY/ZZ]
+ * @return array [stack, port1, port2]
+ */
 function extraire_stack_port($switchport) {
 	preg_match('/stk-254(\d{3})\[(\d{2})\/(\d{2})\]/', $switchport, $matches);
 	if (count($matches) === 4) {
@@ -48,11 +48,11 @@ function extraire_stack_port($switchport) {
 }
 
 /**
-	Genere le contenu du fichier donnees_de_test.txt.
-
-	@param array $equipements Liste des equipements
-	@return string Contenu du fichier
-*/
+ * Genere le contenu du fichier donnees_de_test.txt.
+ * 
+ * @param array $equipements Liste des equipements
+ * @return string Contenu du fichier
+ */
 function generer_fichier_test($equipements) {
 	$txt = "=== EQUIPEMENTS RESEAU - DONNEES DE TEST ===\n\n";
 
@@ -87,9 +87,9 @@ function generer_fichier_test($equipements) {
 // ==============================================================================
 
 /**
-	Point d entree du script.
-	Cree les tables et insere les equipements.
-*/
+ * Point d entree du script.
+ * Cree les tables et insere les equipements.
+ */
 function main() {
 	$debut = microtime(true);
 	echo "=== Seed netweb1.1 ===\n\n";

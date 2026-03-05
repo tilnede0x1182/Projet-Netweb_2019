@@ -1,25 +1,25 @@
 <?php
 /**
-	Fonctions SNMP pour interroger les equipements reseau.
-
-	NOTE PORTFOLIO : Les appels SNMP reels (snmp2_get) sont commentes car ce projet
-	est presente sans infrastructure reseau. La fonction simule_snmp() genere des
-	donnees au format SNMP reel pour demontrer le fonctionnement de l application.
-	En presence d equipements reels, il suffit de decommenter l appel snmp2_get().
-*/
+ * Fonctions SNMP pour interroger les equipements reseau.
+ * 
+ * NOTE PORTFOLIO : Les appels SNMP reels (snmp2_get) sont commentes car ce projet
+ * est presente sans infrastructure reseau. La fonction simule_snmp() genere des
+ * donnees au format SNMP reel pour demontrer le fonctionnement de l application.
+ * En presence d equipements reels, il suffit de decommenter l appel snmp2_get().
+ */
 
 // ==============================================================================
 // Fonction de simulation SNMP
 // ==============================================================================
 
 /**
-	Simule une reponse SNMP avec des donnees au format reel.
-	Utilisee en l absence d equipements reseau reels.
-
-	@param string $ip Adresse IP de l equipement
-	@param string $oid OID SNMP demande
-	@return string Reponse au format SNMP (ex: "INTEGER: 1", "Gauge32: 100000000")
-*/
+ * Simule une reponse SNMP avec des donnees au format reel.
+ * Utilisee en l absence d equipements reseau reels.
+ * 
+ * @param string $ip Adresse IP de l equipement
+ * @param string $oid OID SNMP demande
+ * @return string Reponse au format SNMP (ex: "INTEGER: 1", "Gauge32: 100000000")
+ */
 function simule_snmp($ip, $oid) {
 	// OID status port (1.3.6.1.2.1.2.2.1.8.x) -> INTEGER: 1 (up) ou 2 (down)
 	if (str_contains($oid, "1.3.6.1.2.1.2.2.1.8")) {
@@ -53,17 +53,17 @@ function simule_snmp($ip, $oid) {
 // ==============================================================================
 
 /**
-	Interroge un equipement via SNMP et retourne la valeur de l OID demande.
-
-	NOTE : L appel reel snmp2_get() est commente car ce projet est presente
-	sans infrastructure reseau. En presence d equipements reels, decommenter
-	la ligne snmp2_get() et commenter l appel simule_snmp().
-
-	@param string $adresse_ip_equipement Adresse IP de l equipement
-	@param string $communaute_snmp Communaute SNMP (ex: "public", "private")
-	@param string $identifiant_objet_snmp Identifiant de l objet SNMP a interroger
-	@return string Valeur retournee par l equipement ou "Pas de reponse"
-*/
+ * Interroge un equipement via SNMP et retourne la valeur de l OID demande.
+ * 
+ * NOTE : L appel reel snmp2_get() est commente car ce projet est presente
+ * sans infrastructure reseau. En presence d equipements reels, decommenter
+ * la ligne snmp2_get() et commenter l appel simule_snmp().
+ * 
+ * @param string $adresse_ip_equipement Adresse IP de l equipement
+ * @param string $communaute_snmp Communaute SNMP (ex: "public", "private")
+ * @param string $identifiant_objet_snmp Identifiant de l objet SNMP a interroger
+ * @return string Valeur retournee par l equipement ou "Pas de reponse"
+ */
 function renvoie_objet_snmp($adresse_ip_equipement, $communaute_snmp, $identifiant_objet_snmp) {
 	// APPEL REEL SNMP (commente - pas d'équipements disponibles)
 	// $reponse_equipement = @snmp2_get($adresse_ip_equipement, $communaute_snmp, $identifiant_objet_snmp, 100, 3);
@@ -76,14 +76,14 @@ function renvoie_objet_snmp($adresse_ip_equipement, $communaute_snmp, $identifia
 }
 
 /**
-	Retourne le VLAN attribue a un port de switch Avaya.
-
-	@param string $ip_switch Adresse IP du switch
-	@param int $numero_switch Numero du switch dans le stack
-	@param int $port_physique Numero du port
-	@param string $communaute_protocole_snmp Communaute SNMP
-	@return string Numero de VLAN ou "Pas de reponse"
-*/
+ * Retourne le VLAN attribue a un port de switch Avaya.
+ * 
+ * @param string $ip_switch Adresse IP du switch
+ * @param int $numero_switch Numero du switch dans le stack
+ * @param int $port_physique Numero du port
+ * @param string $communaute_protocole_snmp Communaute SNMP
+ * @return string Numero de VLAN ou "Pas de reponse"
+ */
 function renvoie_VLAN($ip_switch, $numero_switch, $port_physique, $communaute_protocole_snmp) {
 		if (!verifie_marque_avaya($ip_switch, $communaute_protocole_snmp)) {
 			//echo("renvoie_VLAN : Attention, le switch demandé n'est pas de marque Avaya");
@@ -93,14 +93,14 @@ function renvoie_VLAN($ip_switch, $numero_switch, $port_physique, $communaute_pr
 	}
 
 /**
-	Retourne le status d un port de switch (up/down).
-
-	@param string ip_switch Adresse IP du switch
-	@param int numero_switch Numero du switch dans le stack
-	@param int port_physique Numero du port
-	@param string communaute_protocole_snmp Communaute SNMP
-	@return string Status du port (1=up, 2=down) ou "Pas de reponse"
-*/
+ * Retourne le status d un port de switch (up/down).
+ * 
+ * @param string ip_switch Adresse IP du switch
+ * @param int numero_switch Numero du switch dans le stack
+ * @param int port_physique Numero du port
+ * @param string communaute_protocole_snmp Communaute SNMP
+ * @return string Status du port (1=up, 2=down) ou "Pas de reponse"
+ */
 function renvoie_status_port($ip_switch, $numero_switch, $port_physique, $communaute_protocole_snmp) {
 		if (!verifie_marque_avaya($ip_switch, $communaute_protocole_snmp)) {
 			//echo("renvoie_VLAN : Attention, le switch demandé n'est pas de marque Avaya");
@@ -110,14 +110,14 @@ function renvoie_status_port($ip_switch, $numero_switch, $port_physique, $commun
 	}
 
 /**
-	Retourne la vitesse d un port de switch en bps.
-
-	@param string ip_switch Adresse IP du switch
-	@param int numero_switch Numero du switch dans le stack
-	@param int port_physique Numero du port
-	@param string communaute_protocole_snmp Communaute SNMP
-	@return string Vitesse du port en bps ou "Pas de reponse"
-*/
+ * Retourne la vitesse d un port de switch en bps.
+ * 
+ * @param string ip_switch Adresse IP du switch
+ * @param int numero_switch Numero du switch dans le stack
+ * @param int port_physique Numero du port
+ * @param string communaute_protocole_snmp Communaute SNMP
+ * @return string Vitesse du port en bps ou "Pas de reponse"
+ */
 function renvoie_vitesse_port($ip_switch, $numero_switch, $port_physique, $communaute_protocole_snmp) {
 		if (!verifie_marque_avaya($ip_switch, $communaute_protocole_snmp)) {
 			//echo("renvoie_VLAN : Attention, le switch demandé n'est pas de marque Avaya");
@@ -128,12 +128,12 @@ function renvoie_vitesse_port($ip_switch, $numero_switch, $port_physique, $commu
 	}
 
 /**
-	Retourne les informations de marque d un switch.
-
-	@param string ip_switch Adresse IP du switch
-	@param string communaute_protocole_snmp Communaute SNMP
-	@return array Tableau contenant les informations de marque
-*/
+ * Retourne les informations de marque d un switch.
+ * 
+ * @param string ip_switch Adresse IP du switch
+ * @param string communaute_protocole_snmp Communaute SNMP
+ * @return array Tableau contenant les informations de marque
+ */
 function renvoie_marque_switch($ip_switch, $communaute_protocole_snmp) {
 		$infos_marque = array();
 		for ($index_oid = 2; $index_oid < 9; $index_oid++) {
@@ -147,13 +147,13 @@ function renvoie_marque_switch($ip_switch, $communaute_protocole_snmp) {
 // ==============================================================================
 
 /**
-	Enrichit les resultats de la BDD avec les donnees SNMP des equipements.
-	Ajoute le status, la vitesse et le VLAN pour chaque port.
-
-	@param array $resultats_bdd Tableau de resultats de la base de donnees
-	@param string communaute_protocole_snmp Communaute SNMP
-	@return array Tableau enrichi avec les donnees SNMP
-*/
+ * Enrichit les resultats de la BDD avec les donnees SNMP des equipements.
+ * Ajoute le status, la vitesse et le VLAN pour chaque port.
+ * 
+ * @param array $resultats_bdd Tableau de resultats de la base de donnees
+ * @param string communaute_protocole_snmp Communaute SNMP
+ * @return array Tableau enrichi avec les donnees SNMP
+ */
 function enrichie_resultats_BDD_par_SNMP($resultats_bdd, $communaute_protocole_snmp) {
 		$resultats_decodes = decode_tab_mysql($resultats_bdd);
 		$resultats_enrichis = array();
@@ -183,12 +183,12 @@ function enrichie_resultats_BDD_par_SNMP($resultats_bdd, $communaute_protocole_s
 // ==============================================================================
 
 /**
-	Verifie si un switch est de marque Avaya.
-
-	@param string ip_switch Adresse IP du switch
-	@param string communaute_protocole_snmp Communaute SNMP
-	@return bool true si le switch est Avaya, false sinon
-*/
+ * Verifie si un switch est de marque Avaya.
+ * 
+ * @param string ip_switch Adresse IP du switch
+ * @param string communaute_protocole_snmp Communaute SNMP
+ * @return bool true si le switch est Avaya, false sinon
+ */
 function verifie_marque_avaya($ip_switch, $communaute_protocole_snmp) {
 		$infos_marque = renvoie_marque_switch($ip_switch, $communaute_protocole_snmp);
 		$chaine_marque_complete = "";

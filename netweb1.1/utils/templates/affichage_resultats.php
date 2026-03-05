@@ -1,20 +1,20 @@
 <?php
 /**
-	Fonctions d affichage HTML pour les resultats de recherche.
-*/
+ * Fonctions d affichage HTML pour les resultats de recherche.
+ */
 
 // ==============================================================================
 // Fonctions d affichage des titres
 // ==============================================================================
 
 /**
-	Affiche une ligne de titres HTML pour une plage de colonnes.
-
-	@param array $tableau_donnees Tableau de donnees
-	@param int $index_ligne Index de la ligne dans le tableau
-	@param int $index_debut Index de debut des colonnes
-	@param int $index_fin Index de fin des colonnes
-*/
+ * Affiche une ligne de titres HTML pour une plage de colonnes.
+ * 
+ * @param array $tableau_donnees Tableau de donnees
+ * @param int $index_ligne Index de la ligne dans le tableau
+ * @param int $index_debut Index de debut des colonnes
+ * @param int $index_fin Index de fin des colonnes
+ */
 function affiche_titres_html_precis($tableau_donnees, $index_ligne, $index_debut, $index_fin) {
 	echo "\t\t".'<tr class="titre_table_resultats">'."\n";
 	for ($index_colonne_parcours = $index_debut; $index_colonne_parcours < $index_fin; $index_colonne_parcours = $index_colonne_parcours + 1) {
@@ -24,11 +24,11 @@ function affiche_titres_html_precis($tableau_donnees, $index_ligne, $index_debut
 }
 
 /**
-	Affiche tous les titres HTML d une ligne du tableau.
-
-	@param array tableau_donnees Tableau de donnees
-	@param int index_ligne Index de la ligne dans le tableau
-*/
+ * Affiche tous les titres HTML d une ligne du tableau.
+ * 
+ * @param array tableau_donnees Tableau de donnees
+ * @param int index_ligne Index de la ligne dans le tableau
+ */
 function affiche_titres_html($tableau_donnees, $index_ligne) {
 	affiche_titres_html_precis($tableau_donnees, $index_ligne, 0, count($tableau_donnees[$index_ligne]));
 }
@@ -38,12 +38,12 @@ function affiche_titres_html($tableau_donnees, $index_ligne) {
 // ==============================================================================
 
 /**
-	Affiche les donnees HTML d une ligne avec mise en forme.
-	Les ports stk-254 sont rendus cliquables avec lien vers le switch.
-
-	@param array tableau_donnees Tableau de donnees
-	@param int index_ligne Index de la ligne dans le tableau
-*/
+ * Affiche les donnees HTML d une ligne avec mise en forme.
+ * Les ports stk-254 sont rendus cliquables avec lien vers le switch.
+ * 
+ * @param array tableau_donnees Tableau de donnees
+ * @param int index_ligne Index de la ligne dans le tableau
+ */
 function affiche_donnees_html($tableau_donnees, $index_ligne) {
 	$nombre_de_cases_horizontales = 3;
 	affiche_titres_html_precis($tableau_donnees, $index_ligne, 0, $nombre_de_cases_horizontales);
@@ -66,10 +66,10 @@ function affiche_donnees_html($tableau_donnees, $index_ligne) {
 }
 
 /**
-	Affiche un tableau complet de resultats en HTML.
-
-	@param array tableau_donnees Tableau de donnees a afficher
-*/
+ * Affiche un tableau complet de resultats en HTML.
+ * 
+ * @param array tableau_donnees Tableau de donnees a afficher
+ */
 function affiche_tab_donnee_html($tableau_donnees) {
 	if ($tableau_donnees != null) {
 		$nombre_elements = count($tableau_donnees);

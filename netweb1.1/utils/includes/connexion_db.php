@@ -1,23 +1,23 @@
 <?php
 /**
-	Fonction de connexion et interrogation de la base de donnees MySQL.
-	Utilise mysqli (PHP 7+).
-*/
+ * Fonction de connexion et interrogation de la base de donnees MySQL.
+ * Utilise mysqli (PHP 7+).
+ */
 
 // ==============================================================================
 // Connexion et requetes MySQL
 // ==============================================================================
 
 /**
-	Execute une requete SQL sur la base de donnees.
-
-	@param string $bdd Nom de la base de donnees
-	@param string $requette Requete SQL a executer
-	@param string $bdd_user Utilisateur MySQL
-	@param string $bdd_mdp Mot de passe MySQL
-	@param string $bdd_adresse_hote Adresse du serveur MySQL
-	@return array Tableau associatif des resultats
-*/
+ * Execute une requete SQL sur la base de donnees.
+ * 
+ * @param string $bdd Nom de la base de donnees
+ * @param string $requette Requete SQL a executer
+ * @param string $bdd_user Utilisateur MySQL
+ * @param string $bdd_mdp Mot de passe MySQL
+ * @param string $bdd_adresse_hote Adresse du serveur MySQL
+ * @return array Tableau associatif des resultats
+ */
 function interroge_la_base($bdd, $requette, $bdd_user, $bdd_mdp, $bdd_adresse_hote) {
 	$link = mysqli_connect($bdd_adresse_hote, $bdd_user, $bdd_mdp, $bdd);
 	if (!$link) {

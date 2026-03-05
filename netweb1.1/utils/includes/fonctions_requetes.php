@@ -1,21 +1,21 @@
 <?php
 /**
-	Fonctions de requetes SQL avec requetes preparees.
-	Factorise le code commun entre RechercheEquipement et RecherchePort.
-*/
+ * Fonctions de requetes SQL avec requetes preparees.
+ * Factorise le code commun entre RechercheEquipement et RecherchePort.
+ */
 
 // ==============================================================================
 // Requetes preparees
 // ==============================================================================
 
 /**
-	Execute une requete preparee pour rechercher un equipement par IP/nom/MAC/inventaire.
-
-	@param mysqli $connexion Connexion MySQL active
-	@param string $nom_base_de_donnees Nom de la base de donnees
-	@param string $entree_user Critere de recherche utilisateur
-	@return array Resultats de la requete
-*/
+ * Execute une requete preparee pour rechercher un equipement par IP/nom/MAC/inventaire.
+ * 
+ * @param mysqli $connexion Connexion MySQL active
+ * @param string $nom_base_de_donnees Nom de la base de donnees
+ * @param string $entree_user Critere de recherche utilisateur
+ * @return array Resultats de la requete
+ */
 function recherche_equipement_prepare($connexion, $nom_base_de_donnees, $entree_user) {
 	$entree = trim($entree_user);
 	if (empty($entree)) {
@@ -51,15 +51,15 @@ function recherche_equipement_prepare($connexion, $nom_base_de_donnees, $entree_
 }
 
 /**
-	Execute une requete preparee pour rechercher un equipement par stack/port.
-
-	@param connexion mysqli Connexion MySQL active
-	@param nom_base_de_donnees string Nom de la base de donnees
-	@param string $numero_stack Numero de stack
-	@param string $port_debut Premier numero de port
-	@param string $port_fin Second numero de port
-	@return array Resultats de la requete
-*/
+ * Execute une requete preparee pour rechercher un equipement par stack/port.
+ * 
+ * @param connexion mysqli Connexion MySQL active
+ * @param nom_base_de_donnees string Nom de la base de donnees
+ * @param string $numero_stack Numero de stack
+ * @param string $port_debut Premier numero de port
+ * @param string $port_fin Second numero de port
+ * @return array Resultats de la requete
+ */
 function recherche_port_prepare($connexion, $nom_base_de_donnees, $numero_stack, $port_debut, $port_fin) {
 	$numero_stack = trim($numero_stack);
 	$port_debut = trim($port_debut);
@@ -103,14 +103,14 @@ function recherche_port_prepare($connexion, $nom_base_de_donnees, $numero_stack,
 // ==============================================================================
 
 /**
-	Ouvre une connexion MySQL.
-
-	@param string $bdd_adresse_hote Adresse du serveur MySQL
-	@param string $bdd_user Utilisateur MySQL
-	@param string $bdd_mdp Mot de passe MySQL
-	@param string $bdd_base Nom de la base de donnees
-	@return mysqli Connexion MySQL
-*/
+ * Ouvre une connexion MySQL.
+ * 
+ * @param string $bdd_adresse_hote Adresse du serveur MySQL
+ * @param string $bdd_user Utilisateur MySQL
+ * @param string $bdd_mdp Mot de passe MySQL
+ * @param string $bdd_base Nom de la base de donnees
+ * @return mysqli Connexion MySQL
+ */
 function ouvrir_connexion($bdd_adresse_hote, $bdd_user, $bdd_mdp, $bdd_base) {
 	$connexion = mysqli_connect($bdd_adresse_hote, $bdd_user, $bdd_mdp, $bdd_base);
 	if (!$connexion) {
@@ -121,10 +121,10 @@ function ouvrir_connexion($bdd_adresse_hote, $bdd_user, $bdd_mdp, $bdd_base) {
 }
 
 /**
-	Ferme une connexion MySQL.
-
-	@param connexion mysqli Connexion MySQL a fermer
-*/
+ * Ferme une connexion MySQL.
+ * 
+ * @param connexion mysqli Connexion MySQL a fermer
+ */
 function fermer_connexion($connexion) {
 	mysqli_close($connexion);
 }
@@ -134,10 +134,10 @@ function fermer_connexion($connexion) {
 // ==============================================================================
 
 /**
-	Recupere les valeurs POST du formulaire avec nettoyage.
-
-	@return array Valeurs nettoyees (entree_user, numero_stack, port_debut, port_fin)
-*/
+ * Recupere les valeurs POST du formulaire avec nettoyage.
+ * 
+ * @return array Valeurs nettoyees (entree_user, numero_stack, port_debut, port_fin)
+ */
 function recuperer_valeurs_formulaire() {
 	$entree_user = isset($_POST['entree_user']) ? trim(htmlspecialchars($_POST['entree_user'])) : "";
 	$numero_stack = isset($_POST['numero_stack']) ? trim(htmlspecialchars($_POST['numero_stack'])) : "";
@@ -153,13 +153,13 @@ function recuperer_valeurs_formulaire() {
 }
 
 /**
-	Affiche la page complete avec formulaire et resultats.
-
-	@param string $titre_page Titre de la page HTML
-	@param array $valeurs_formulaire Valeurs du formulaire
-	@param array $resultats_bdd Resultats de la requete BDD
-	@param string $communaute_protocole_snmp Communaute SNMP
-*/
+ * Affiche la page complete avec formulaire et resultats.
+ * 
+ * @param string $titre_page Titre de la page HTML
+ * @param array $valeurs_formulaire Valeurs du formulaire
+ * @param array $resultats_bdd Resultats de la requete BDD
+ * @param string $communaute_protocole_snmp Communaute SNMP
+ */
 function afficher_page_resultats($titre_page, $valeurs_formulaire, $resultats_bdd, $communaute_protocole_snmp) {
 	affiche_debut_page_html();
 	affiche_head_page_html($titre_page);

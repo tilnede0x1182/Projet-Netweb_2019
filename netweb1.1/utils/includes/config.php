@@ -1,7 +1,7 @@
 <?php
 /**
-	Variables et constantes de configuration de l application.
-*/
+ * Variables et constantes de configuration de l application.
+ */
 
 // ==============================================================================
 // Donnees

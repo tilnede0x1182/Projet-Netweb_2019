@@ -1,8 +1,8 @@
 <?php
 /**
-	Traitement du formulaire de recherche par stack et port.
-	Interroge la base de donnees et affiche les resultats enrichis par SNMP.
-*/
+ * Traitement du formulaire de recherche par stack et port.
+ * Interroge la base de donnees et affiche les resultats enrichis par SNMP.
+ */
 
 // ==============================================================================
 // Importations

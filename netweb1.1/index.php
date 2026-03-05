@@ -1,8 +1,8 @@
 <?php
 /**
-	Point d entree principal de l application Netweb.
-	Charge tous les modules et affiche la page d accueil.
-*/
+ * Point d entree principal de l application Netweb.
+ * Charge tous les modules et affiche la page d accueil.
+ */
 
 // ==============================================================================
 // Importations
@@ -23,20 +23,20 @@ include 'utils/includes/config.php';
 // ==============================================================================
 
 /**
-	Execute les tests de l application.
-
-	@param string $communaute_protocole_snmp Communaute SNMP pour les tests
-*/
+ * Execute les tests de l application.
+ * 
+ * @param string $communaute_protocole_snmp Communaute SNMP pour les tests
+ */
 function tests($communaute_protocole_snmp) {
 	$resultats_test = test_bdd();
 	enrichie_resultats_BDD_par_SNMP($resultats_test, $communaute_protocole_snmp);
 }
 
 /**
-	Affiche la page principale avec le formulaire de recherche.
-
-	@param string $titre_page Titre de la page HTML
-*/
+ * Affiche la page principale avec le formulaire de recherche.
+ * 
+ * @param string $titre_page Titre de la page HTML
+ */
 function main($titre_page) {
 	affiche_debut_page_html();
 	affiche_head_page_html($titre_page);
