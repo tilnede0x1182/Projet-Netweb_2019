@@ -2,10 +2,40 @@
 /**
  * Script de seed pour la base de donnees netweb1.1.
  * Genere 15 equipements reseau pour les tests SNMP.
- * 
+ *
  * Usage :
  * php seed.php
  */
+
+// ==============================================================================
+// Chargement du .env
+// ==============================================================================
+
+/**
+ *	Charge les variables d'environnement depuis un fichier .env
+ *
+ *	@param string $path Chemin vers le fichier .env
+ */
+function load_env_file($path) {
+	if (!file_exists($path)) {
+		return;
+	}
+	$lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+	foreach ($lines as $line) {
+		$line = trim($line);
+		if ($line === '' || $line[0] === '#') {
+			continue;
+		}
+		$pos = strpos($line, '=');
+		if ($pos === false) {
+			continue;
+		}
+		$key = trim(substr($line, 0, $pos));
+		$value = trim(substr($line, $pos + 1));
+		$_ENV[$key] = $value;
+		putenv("$key=$value");
+	}
+}
 
 // ==============================================================================
 // Donnees
@@ -94,7 +124,16 @@ function main() {
 	$debut = microtime(true);
 	echo "=== Seed netweb1.1 ===\n\n";
 
-	$connexion = mysqli_connect('localhost', 'tilnede0x1182', 'tilnede0x1182', 'netweb1.1');
+	// Charger le .env (racine du projet = 2 niveaux au-dessus de data/)
+	load_env_file(dirname(dirname(__DIR__)) . '/.env');
+
+	// Connexion à la BDD (depuis .env)
+	$host = $_ENV['DB_HOST'] ?? 'localhost';
+	$user = $_ENV['DB_USER'] ?? '';
+	$pass = $_ENV['DB_PASSWORD'] ?? '';
+	$dbname = $_ENV['DB_NAME'] ?? '';
+
+	$connexion = mysqli_connect($host, $user, $pass, $dbname);
 	if (!$connexion) {
 		die("Erreur de connexion: " . mysqli_connect_error() . "\n");
 	}
