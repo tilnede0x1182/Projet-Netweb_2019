@@ -127,12 +127,13 @@ function formate_vitesse_port($vitesse_bits_par_seconde) {
 // ==============================================================================
 
 /**
-	Polyfill pour str_contains (PHP < 8.0).
-
-	@param string $chaine Chaine dans laquelle chercher
-	@param string $sous_chaine Sous-chaine a trouver
-	@return bool true si trouve, false sinon
-*/
+ * str_contains() est native depuis PHP 8 et absente en PHP 7.
+ * Polyfill de compatibilité pour PHP 7.
+ *
+ * @param string $chaine Chaîne dans laquelle chercher
+ * @param string $sous_chaine Sous-chaîne à rechercher
+ * @return bool true si la sous-chaîne est trouvée, false sinon
+ */
 if (!function_exists('str_contains')) {
 	function str_contains($chaine, $sous_chaine) {
 		$longueur_sous_chaine = strlen($sous_chaine);
