@@ -30,6 +30,59 @@ $EQUIPEMENTS = [
 ];
 
 // ==============================================================================
+// Fonctions utilitaires
+// ==============================================================================
+
+/**
+	Extrait les numeros stack/port du format switchport.
+
+	@param switchport string Format stk-254XXX[YY/ZZ]
+	@return array [stack, port1, port2]
+*/
+function extraire_stack_port($switchport) {
+	preg_match('/stk-254(\d{3})\[(\d{2})\/(\d{2})\]/', $switchport, $matches);
+	if (count($matches) === 4) {
+		return [$matches[1], $matches[2], $matches[3]];
+	}
+	return ['???', '??', '??'];
+}
+
+/**
+	Genere le contenu du fichier donnees_de_test.txt.
+
+	@param equipements array Liste des equipements
+	@return string Contenu du fichier
+*/
+function generer_fichier_test($equipements) {
+	$txt = "=== EQUIPEMENTS RESEAU - DONNEES DE TEST ===\n\n";
+
+	$txt .= "FORMULAIRE 1 : Recherche par IP, nom, MAC ou inventaire\n";
+	$txt .= str_repeat("-", 56) . "\n";
+	$txt .= "Entrez UNE de ces valeurs dans le champ de recherche\n\n";
+	$txt .= sprintf("%-18s %-15s %-22s %s\n", "NOM", "IP", "MAC", "INVENTAIRE");
+	$txt .= str_repeat("-", 79) . "\n";
+
+	foreach ($equipements as $eq) {
+		$txt .= sprintf("%-18s %-15s %-22s %s\n", $eq['name'], $eq['ip'], $eq['mac'], $eq['gpsnum']);
+	}
+
+	$txt .= "\n\n";
+
+	$txt .= "FORMULAIRE 2 : Recherche par stack et port\n";
+	$txt .= str_repeat("-", 42) . "\n";
+	$txt .= "Entrez le numero de stack et les deux numeros de port\n\n";
+	$txt .= sprintf("%-7s %-8s %-8s %s\n", "STACK", "PORT 1", "PORT 2", "EQUIPEMENT ATTENDU");
+	$txt .= str_repeat("-", 50) . "\n";
+
+	foreach ($equipements as $eq) {
+		list($stack, $port1, $port2) = extraire_stack_port($eq['switchport']);
+		$txt .= sprintf("%-7s %-8s %-8s %s\n", $stack, $port1, $port2, $eq['name']);
+	}
+
+	return $txt;
+}
+
+// ==============================================================================
 // Main
 // ==============================================================================
 
@@ -57,9 +110,6 @@ function main() {
 
 	// Insertion des equipements
 	global $EQUIPEMENTS;
-	$usersTxt = "=== EQUIPEMENTS RESEAU ===\n\n";
-	$usersTxt .= sprintf("%-18s %-15s %-20s %s\n", "NOM", "IP", "MAC", "INVENTAIRE");
-	$usersTxt .= str_repeat("-", 75) . "\n";
 
 	foreach ($EQUIPEMENTS as $equipement) {
 		$name = mysqli_real_escape_string($connexion, $equipement['name']);
@@ -86,15 +136,14 @@ function main() {
 				VALUES ('$ip', $client_id, 100, 'allocated', 'true')";
 		mysqli_query($connexion, $sql);
 
-		$usersTxt .= sprintf("%-18s %-15s %-20s %s\n", $name, $ip, $mac, $gpsnum);
 	}
 
 	echo "Equipements inseres: " . count($EQUIPEMENTS) . "\n";
 
-	// Ecriture du fichier users.txt
-	$cheminUsers = __DIR__ . '/users.txt';
-	file_put_contents($cheminUsers, $usersTxt);
-	echo "\nFichier users.txt cree: $cheminUsers\n";
+	// Generation du fichier donnees_de_test.txt
+	$cheminTest = __DIR__ . '/donnees_de_test.txt';
+	file_put_contents($cheminTest, generer_fichier_test($EQUIPEMENTS));
+	echo "\nFichier donnees_de_test.txt cree: $cheminTest\n";
 
 	mysqli_close($connexion);
 

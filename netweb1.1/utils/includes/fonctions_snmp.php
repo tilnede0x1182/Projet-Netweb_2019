@@ -11,30 +11,30 @@
 	Calcule le numero de port SNMP en fonction du switch et du port physique.
 	Les switchs empiles ont des offsets de 64 par switch.
 
-	@param num_switch Numero du switch dans le stack (1-4)
+	@param numero_switch Numero du switch dans le stack (1-4)
 	@param port Numero du port physique (0-50)
 	@return int Numero de port SNMP calcule
 */
-function calcul_numero_port_snmp($num_switch, $port) {
-	if ($port < 0 || $port > 50) {
-		print("calcul_numero_port_snmp : Erreur, port<0 ou port>50");
-		return $port;
+function calcul_numero_port_protocole_snmp($numero_switch, $port_physique) {
+	if ($port_physique < 0 || $port_physique > 50) {
+		print("calcul_numero_port_protocole_snmp : Erreur, port_physique<0 ou port_physique>50");
+		return $port_physique;
 	}
-	if ($num_switch < 1 || $num_switch > 4) {
-		print("calcul_numero_port_snmp : Erreur, num_switch<1 ou num_switch>4");
-		return $port;
+	if ($numero_switch < 1 || $numero_switch > 4) {
+		print("calcul_numero_port_protocole_snmp : Erreur, numero_switch<1 ou numero_switch>4");
+		return $port_physique;
 	}
-	if ($num_switch == 1) {
-		return $port;
+	if ($numero_switch == 1) {
+		return $port_physique;
 	}
-	if ($num_switch == 2) {
-		return ($port + 64);
+	if ($numero_switch == 2) {
+		return ($port_physique + 64);
 	}
-	if ($num_switch == 3) {
-		return ($port + 128);
+	if ($numero_switch == 3) {
+		return ($port_physique + 128);
 	}
-	if ($num_switch == 4) {
-		return ($port + 192);
+	if ($numero_switch == 4) {
+		return ($port_physique + 192);
 	}
 }
 
@@ -45,43 +45,43 @@ function calcul_numero_port_snmp($num_switch, $port) {
 /**
 	Verifie si le format du port respecte le standard stk-254*.
 
-	@param port_stk Chaine du port au format stack
+	@param port_format_stack Chaine du port au format stack
 	@return bool true si format valide, false sinon
 */
-function verife_stk_standart($port_stk) {
-	if (strcmp(substr($port_stk, 0, 7), "stk-254") != 0) return false;
+function verife_format_stack_standard($port_format_stack) {
+	if (strcmp(substr($port_format_stack, 0, 7), "stk-254") != 0) return false;
 	return true;
 }
 
 /**
 	Extrait le numero de stack depuis une chaine au format stk-254XXX.
 
-	@param port_stk Chaine du port au format stack
+	@param port_format_stack Chaine du port au format stack
 	@return int Numero du stack ou -1 si format invalide
 */
-function donne_stack($port_stk) {
-	if (!verife_stk_standart($port_stk)) {
+function donne_stack($port_format_stack) {
+	if (!verife_format_stack_standard($port_format_stack)) {
 		return -1;
 	}
-	$tmp = substr($port_stk, 7, 3);
-	$res = intval($tmp);
-	return $res;
+	$numero_stack_extrait = substr($port_format_stack, 7, 3);
+	$numero_stack_entier = intval($numero_stack_extrait);
+	return $numero_stack_entier;
 }
 
 /**
 	Extrait les numeros de switch et port depuis une chaine au format stack.
 
-	@param port_stk Chaine du port au format stk-254XXX-YY/ZZ
+	@param port_format_stack Chaine du port au format stk-254XXX-YY/ZZ
 	@return array Tableau [num_switch, num_port] ou tableau vide si invalide
 */
-function donne_port($port_stk) {
-	if (!verife_stk_standart($port_stk)) {
+function donne_port($port_format_stack) {
+	if (!verife_format_stack_standard($port_format_stack)) {
 		return array();
 	}
-	$res = array();
-	array_push($res, intval(substr($port_stk, 11, 2)));
-	array_push($res, intval(substr($port_stk, 14, 2)));
-	return $res;
+	$resultats_port = array();
+	array_push($resultats_port, intval(substr($port_format_stack, 11, 2)));
+	array_push($resultats_port, intval(substr($port_format_stack, 14, 2)));
+	return $resultats_port;
 }
 
 // ==============================================================================
@@ -95,21 +95,21 @@ function donne_port($port_stk) {
 	@param tab Tableau de resultats MySQL
 	@return array Tableau decode avec structure [[cles], [valeurs]]
 */
-function decode_tab_mysql($tab) {
-	$res = array();
-	$tmp1 = array();
-	$tmp2 = array();
-	foreach ($tab as $ligne) {
-		$tmp = array();
+function decode_tab_mysql($tableau_mysql) {
+	$resultats_decodes = array();
+	$cles_colonne = array();
+	$valeurs_colonne = array();
+	foreach ($tableau_mysql as $ligne) {
+		$ligne_decodee = array();
 		foreach ($ligne as $cle => $valeur) {
-			array_push($tmp1, $cle);
-			array_push($tmp2, $valeur);
+			array_push($cles_colonne, $cle);
+			array_push($valeurs_colonne, $valeur);
 		}
-		array_push($tmp, $tmp1);
-		array_push($tmp, $tmp2);
-		array_push($res, $tmp);
+		array_push($ligne_decodee, $cles_colonne);
+		array_push($ligne_decodee, $valeurs_colonne);
+		array_push($resultats_decodes, $ligne_decodee);
 	}
-	return $res;
+	return $resultats_decodes;
 }
 
 ?>

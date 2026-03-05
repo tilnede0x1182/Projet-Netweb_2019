@@ -1,0 +1,344 @@
+
+=== Web_et_Reseau/Administration_Equipements/Consultation_SNMP/Projet-Netweb_2019/netweb1.1\archives\info_script.php ===
+OK : aucun nom cryptique détecté
+OK : aucun chiffre détecté dans les noms
+Erreur : --check-globals n'est supporté que pour Python
+[IGNORÉ] --check-var : JS/TS uniquement
+
+=== Web_et_Reseau/Administration_Equipements/Consultation_SNMP/Projet-Netweb_2019/netweb1.1\assets\css\style.css ===
+Accents manquants :
+  - classe:titre_table_resultats (ligne 9) : resultats → résultats
+  - classe:donnees_table_resultats (ligne 13) : donnees → données, resultats → résultats
+  - classe:table_resultats (ligne 17) : resultats → résultats
+
+Noms potentiellement cryptiques (à vérifier) :
+  - id:2FD60A (ligne 10) : segments non reconnus [2FD60A]
+  - id:659FEA (ligne 14) : segments non reconnus [659FEA]
+  - id:FEDD9C (ligne 27) : segments non reconnus [FEDD9C]
+Noms contenant des chiffres :
+  - 2FD60A (ligne 10) [id]
+  - 659FEA (ligne 14) [id]
+  - FEDD9C (ligne 27) [id]
+Erreur : --check-globals n'est supporté que pour Python
+[IGNORÉ] --check-var : JS/TS uniquement
+
+=== Web_et_Reseau/Administration_Equipements/Consultation_SNMP/Projet-Netweb_2019/netweb1.1\data\seed.php ===
+Accents manquants :
+  - EQUIPEMENTS (ligne 14) : EQUIPEMENTS → équipements
+  - sqlFile (ligne 105) : sql → SQL
+  - sql (ligne 106) : sql → SQL
+  - ip (ligne 117) : ip → IP
+  - dns (ligne 121) : dns → DNS
+  - sql (ligne 129) : sql → SQL
+  - sql (ligne 135) : sql → SQL
+  - duree (ligne 151) : duree → durée
+  - @param:equipements (ligne 53) : equipements → équipements
+
+Noms potentiellement cryptiques (à vérifier) :
+  - txt (ligne 57) : segments non reconnus [txt]
+  - gpsnum (ligne 119) : segments non reconnus [gpsnum]
+  - ug (ligne 122) : segments non reconnus [ug]
+  - switchport (ligne 126) : segments non reconnus [switchport]
+  - param:$switchport (ligne 42) : segments non reconnus [$switchport]
+  - param:$equipements (ligne 56) : segments non reconnus [$equipements]
+  - @param:switchport (ligne 39) : segments non reconnus [switchport]
+OK : aucun chiffre détecté dans les noms
+Erreur : --check-globals n'est supporté que pour Python
+[IGNORÉ] --check-var : JS/TS uniquement
+
+=== Web_et_Reseau/Administration_Equipements/Consultation_SNMP/Projet-Netweb_2019/netweb1.1\index.php ===
+OK : aucun nom cryptique détecté
+OK : aucun chiffre détecté dans les noms
+Erreur : --check-globals n'est supporté que pour Python
+[IGNORÉ] --check-var : JS/TS uniquement
+
+=== Web_et_Reseau/Administration_Equipements/Consultation_SNMP/Projet-Netweb_2019/netweb1.1\index_old.php ===
+Accents manquants :
+  - resultats_test (ligne 31) : resultats → résultats
+  - @param:communaute_protocole_snmp (ligne 28) : communaute → communauté
+
+Noms potentiellement cryptiques (à vérifier) :
+  - param:$communaute_protocole_snmp (ligne 30) : segments non reconnus [$communaute, snmp]
+  - param:$titre_page (ligne 40) : segments non reconnus [$titre]
+  - @param:communaute_protocole_snmp (ligne 28) : segments non reconnus [snmp]
+OK : aucun chiffre détecté dans les noms
+Erreur : --check-globals n'est supporté que pour Python
+[IGNORÉ] --check-var : JS/TS uniquement
+
+=== Web_et_Reseau/Administration_Equipements/Consultation_SNMP/Projet-Netweb_2019/netweb1.1\src\pages\RechercheEquipement.php ===
+Accents manquants :
+  - resultats (ligne 26) : resultats → résultats
+OK : aucun chiffre détecté dans les noms
+Erreur : --check-globals n'est supporté que pour Python
+[IGNORÉ] --check-var : JS/TS uniquement
+
+=== Web_et_Reseau/Administration_Equipements/Consultation_SNMP/Projet-Netweb_2019/netweb1.1\src\pages\RecherchePort.php ===
+Accents manquants :
+  - resultats (ligne 26) : resultats → résultats
+OK : aucun chiffre détecté dans les noms
+Erreur : --check-globals n'est supporté que pour Python
+[IGNORÉ] --check-var : JS/TS uniquement
+
+=== Web_et_Reseau/Administration_Equipements/Consultation_SNMP/Projet-Netweb_2019/netweb1.1\utils\includes\config.php ===
+Accents manquants :
+  - root_url (ligne 11) : url → URL
+  - adresse_hote_base_de_donnees (ligne 17) : hote → hôte, donnees → données
+  - utilisateur_base_de_donnees (ligne 18) : donnees → données
+  - mot_de_passe_base_de_donnees (ligne 19) : donnees → données
+  - nom_base_de_donnees (ligne 20) : donnees → données
+  - communaute_protocole_snmp (ligne 23) : communaute → communauté
+
+Noms potentiellement cryptiques (à vérifier) :
+  - communaute_protocole_snmp (ligne 23) : segments non reconnus [snmp]
+OK : aucun chiffre détecté dans les noms
+Erreur : --check-globals n'est supporté que pour Python
+[IGNORÉ] --check-var : JS/TS uniquement
+
+=== Web_et_Reseau/Administration_Equipements/Consultation_SNMP/Projet-Netweb_2019/netweb1.1\utils\includes\connexion_db.php ===
+Accents manquants :
+  - param:$bdd_adresse_hote (ligne 21) : hote → hôte
+  - @param:bdd_adresse_hote (ligne 18) : hote → hôte
+
+Noms potentiellement cryptiques (à vérifier) :
+  - param:$bdd (ligne 21) : segments non reconnus [$bdd]
+  - param:$requette (ligne 21) : segments non reconnus [$requette]
+  - param:$bdd_user (ligne 21) : segments non reconnus [$bdd]
+  - param:$bdd_mdp (ligne 21) : segments non reconnus [$bdd, mdp]
+  - param:$bdd_adresse_hote (ligne 21) : segments non reconnus [$bdd]
+  - @param:bdd (ligne 14) : segments non reconnus [bdd]
+  - @param:requette (ligne 15) : segments non reconnus [requette]
+  - @param:bdd_user (ligne 16) : segments non reconnus [bdd]
+  - @param:bdd_mdp (ligne 17) : segments non reconnus [bdd, mdp]
+  - @param:bdd_adresse_hote (ligne 18) : segments non reconnus [bdd]
+OK : aucun chiffre détecté dans les noms
+Erreur : --check-globals n'est supporté que pour Python
+[IGNORÉ] --check-var : JS/TS uniquement
+
+=== Web_et_Reseau/Administration_Equipements/Consultation_SNMP/Projet-Netweb_2019/netweb1.1\utils\includes\fonctions_affichage.php ===
+Accents manquants :
+  - longueur_reponse (ligne 69) : reponse → réponse
+  - index_caractere_reponse (ligne 70) : caractere → caractère, reponse → réponse
+  - index_caractere_reponse (ligne 73) : caractere → caractère, reponse → réponse
+  - index_caractere_reponse (ligne 75) : caractere → caractère, reponse → réponse
+  - index_caractere_reponse (ligne 82) : caractere → caractère, reponse → réponse
+  - vitesse_formatee (ligne 116) : formatee → formatée
+  - longueur_sous_chaine (ligne 138) : chaine → chaîne
+  - longueur_chaine (ligne 139) : chaine → chaîne
+  - param:$sous_chaine (ligne 137) : chaine → chaîne
+  - @param:resultats_mysql (ligne 37) : resultats → résultats
+  - @param:chaine (ligne 132) : chaine → chaîne
+  - @param:chaine_a_chercher (ligne 133) : chaine → chaîne
+
+Noms potentiellement cryptiques (à vérifier) :
+  - param:$tableau_elements (ligne 15) : segments non reconnus [$tableau]
+  - param:$tableau_2_dimensions (ligne 26) : segments non reconnus [$tableau, 2]
+  - param:$resultats_mysql (ligne 39) : segments non reconnus [$resultats, mysql]
+  - param:$resultat_verification (ligne 52) : segments non reconnus [$resultat]
+  - param:$reponse_snmp (ligne 67) : segments non reconnus [$reponse, snmp]
+  - param:$nombre (ligne 98) : segments non reconnus [$nombre]
+  - param:$longueur_totale (ligne 98) : segments non reconnus [$longueur]
+  - param:$vitesse_bits_par_seconde (ligne 115) : segments non reconnus [$vitesse]
+  - param:$chaine (ligne 137) : segments non reconnus [$chaine]
+  - param:$sous_chaine (ligne 137) : segments non reconnus [$sous]
+  - @param:tableau_2_dimensions (ligne 24) : segments non reconnus [2]
+  - @param:resultats_mysql (ligne 37) : segments non reconnus [mysql]
+  - @param:tmp (ligne 50) : segments non reconnus [tmp]
+  - @param:tmp (ligne 64) : segments non reconnus [tmp]
+  - @param:nbr_zeros (ligne 95) : segments non reconnus [nbr]
+  - @param:chaine_a_chercher (ligne 133) : segments non reconnus [a]
+OK : aucun chiffre détecté dans les noms
+Erreur : --check-globals n'est supporté que pour Python
+[IGNORÉ] --check-var : JS/TS uniquement
+
+=== Web_et_Reseau/Administration_Equipements/Consultation_SNMP/Projet-Netweb_2019/netweb1.1\utils\includes\fonctions_requetes.php ===
+Accents manquants :
+  - requete (ligne 25) : requete → requête
+  - requete_preparee (ligne 34) : requete → requête, preparee → préparée
+  - resultats (ligne 44) : resultats → résultats
+  - numero_stack (ligne 64) : numero → numéro
+  - requete (ligne 74) : requete → requête
+  - requete_preparee (ligne 82) : requete → requête, preparee → préparée
+  - resultats (ligne 92) : resultats → résultats
+  - numero_stack (ligne 143) : numero → numéro
+  - param:$nom_base_de_donnees (ligne 19) : donnees → données
+  - param:$nom_base_de_donnees (ligne 63) : donnees → données
+  - param:$bdd_adresse_hote (ligne 114) : hote → hôte
+  - @param:nom_base_de_donnees (ligne 15) : donnees → données
+  - @param:nom_base_de_donnees (ligne 57) : donnees → données
+  - @param:numero_stack (ligne 58) : numero → numéro
+  - @param:bdd_adresse_hote (ligne 108) : hote → hôte
+  - @param:resultats_bdd (ligne 160) : resultats → résultats
+  - @param:communaute_protocole_snmp (ligne 161) : communaute → communauté
+
+Noms potentiellement cryptiques (à vérifier) :
+  - format_port_bdd (ligne 72) : segments non reconnus [bdd]
+  - param:$connexion (ligne 19) : segments non reconnus [$connexion]
+  - param:$nom_base_de_donnees (ligne 19) : segments non reconnus [$nom]
+  - param:$entree_user (ligne 19) : segments non reconnus [$entree]
+  - param:$connexion (ligne 63) : segments non reconnus [$connexion]
+  - param:$nom_base_de_donnees (ligne 63) : segments non reconnus [$nom]
+  - param:$numero_stack (ligne 63) : segments non reconnus [$numero]
+  - param:$port_debut (ligne 63) : segments non reconnus [$port]
+  - param:$port_fin (ligne 63) : segments non reconnus [$port]
+  - param:$bdd_adresse_hote (ligne 114) : segments non reconnus [$bdd]
+  - param:$bdd_user (ligne 114) : segments non reconnus [$bdd]
+  - param:$bdd_mdp (ligne 114) : segments non reconnus [$bdd, mdp]
+  - param:$bdd_base (ligne 114) : segments non reconnus [$bdd]
+  - param:$connexion (ligne 128) : segments non reconnus [$connexion]
+  - param:$titre_page (ligne 163) : segments non reconnus [$titre]
+  - param:$valeurs_formulaire (ligne 163) : segments non reconnus [$valeurs]
+  - param:$resultats_bdd (ligne 163) : segments non reconnus [$resultats, bdd]
+  - param:$communaute_protocole_snmp (ligne 163) : segments non reconnus [$communaute, snmp]
+  - @param:bdd_adresse_hote (ligne 108) : segments non reconnus [bdd]
+  - @param:bdd_user (ligne 109) : segments non reconnus [bdd]
+  - @param:bdd_mdp (ligne 110) : segments non reconnus [bdd, mdp]
+  - @param:bdd_base (ligne 111) : segments non reconnus [bdd]
+  - @param:resultats_bdd (ligne 160) : segments non reconnus [bdd]
+  - @param:communaute_protocole_snmp (ligne 161) : segments non reconnus [snmp]
+OK : aucun chiffre détecté dans les noms
+Erreur : --check-globals n'est supporté que pour Python
+[IGNORÉ] --check-var : JS/TS uniquement
+
+=== Web_et_Reseau/Administration_Equipements/Consultation_SNMP/Projet-Netweb_2019/netweb1.1\utils\includes\fonctions_snmp.php ===
+Accents manquants :
+  - numero_stack_extrait (ligne 66) : numero → numéro
+  - numero_stack_entier (ligne 67) : numero → numéro
+  - resultats_port (ligne 81) : resultats → résultats
+  - resultats_decodes (ligne 99) : resultats → résultats
+  - cles_colonne (ligne 100) : cles → clés
+  - ligne_decodee (ligne 103) : decodee → décodée
+  - @param:numero_switch (ligne 14) : numero → numéro
+
+Noms potentiellement cryptiques (à vérifier) :
+  - param:$numero_switch (ligne 18) : segments non reconnus [$numero]
+  - param:$port_physique (ligne 18) : segments non reconnus [$port]
+  - param:$port_format_stack (ligne 51) : segments non reconnus [$port]
+  - param:$port_format_stack (ligne 62) : segments non reconnus [$port]
+  - param:$port_format_stack (ligne 77) : segments non reconnus [$port]
+  - param:$tableau_mysql (ligne 98) : segments non reconnus [$tableau, mysql]
+OK : aucun chiffre détecté dans les noms
+Erreur : --check-globals n'est supporté que pour Python
+[IGNORÉ] --check-var : JS/TS uniquement
+
+=== Web_et_Reseau/Administration_Equipements/Consultation_SNMP/Projet-Netweb_2019/netweb1.1\utils\snmp\simulation_snmp.php ===
+Accents manquants :
+  - reponse_equipement (ligne 72) : reponse → réponse, equipement → équipement
+  - reponse_snmp_brute (ligne 126) : reponse → réponse
+  - resultats_decodes (ligne 158) : resultats → résultats
+  - resultats_enrichis (ligne 159) : resultats → résultats
+  - index_equipement (ligne 160) : equipement → équipement
+  - colonnes_entetes (ligne 162) : entetes → entêtes
+  - numero_stack (ligne 165) : numero → numéro
+  - numeros_port (ligne 166) : numeros → numéros
+  - index_equipement (ligne 176) : equipement → équipement
+  - chaine_marque_complete (ligne 194) : chaine → chaîne
+  - chaine_marque_complete (ligne 196) : chaine → chaîne
+  - param:$adresse_ip_equipement (ligne 67) : ip → IP, equipement → équipement
+  - @param:ip (ligne 19) : ip → IP
+  - @param:ip (ligne 62) : ip → IP
+  - @param:communaute (ligne 63) : communaute → communauté
+  - @param:ip_switch (ligne 81) : ip → IP
+  - @param:numero_switch (ligne 82) : numero → numéro
+  - @param:communaute_protocole_snmp (ligne 84) : communaute → communauté
+  - @param:ip_switch (ligne 98) : ip → IP
+  - @param:numero_switch (ligne 99) : numero → numéro
+  - @param:communaute_protocole_snmp (ligne 101) : communaute → communauté
+  - @param:ip_switch (ligne 115) : ip → IP
+  - @param:numero_switch (ligne 116) : numero → numéro
+  - @param:communaute_protocole_snmp (ligne 118) : communaute → communauté
+  - @param:ip_switch (ligne 133) : ip → IP
+  - @param:communaute_protocole_snmp (ligne 134) : communaute → communauté
+  - @param:communaute_protocole_snmp (ligne 154) : communaute → communauté
+  - @param:ip_switch (ligne 188) : ip → IP
+  - @param:communaute_protocole_snmp (ligne 189) : communaute → communauté
+
+Noms potentiellement cryptiques (à vérifier) :
+  - reponse_snmp_brute (ligne 126) : segments non reconnus [snmp]
+  - param:$ip (ligne 23) : segments non reconnus [$ip]
+  - param:$oid (ligne 23) : segments non reconnus [$oid]
+  - param:$adresse_ip_equipement (ligne 67) : segments non reconnus [$adresse]
+  - param:$communaute_snmp (ligne 67) : segments non reconnus [$communaute, snmp]
+  - param:$identifiant_objet_snmp (ligne 67) : segments non reconnus [$identifiant, snmp]
+  - param:$ip_switch (ligne 87) : segments non reconnus [$ip]
+  - param:$numero_switch (ligne 87) : segments non reconnus [$numero]
+  - param:$port_physique (ligne 87) : segments non reconnus [$port]
+  - param:$communaute_protocole_snmp (ligne 87) : segments non reconnus [$communaute, snmp]
+  - param:$ip_switch (ligne 104) : segments non reconnus [$ip]
+  - param:$numero_switch (ligne 104) : segments non reconnus [$numero]
+  - param:$port_physique (ligne 104) : segments non reconnus [$port]
+  - param:$communaute_protocole_snmp (ligne 104) : segments non reconnus [$communaute, snmp]
+  - param:$ip_switch (ligne 121) : segments non reconnus [$ip]
+  - param:$numero_switch (ligne 121) : segments non reconnus [$numero]
+  - param:$port_physique (ligne 121) : segments non reconnus [$port]
+  - param:$communaute_protocole_snmp (ligne 121) : segments non reconnus [$communaute, snmp]
+  - param:$ip_switch (ligne 137) : segments non reconnus [$ip]
+  - param:$communaute_protocole_snmp (ligne 137) : segments non reconnus [$communaute, snmp]
+  - param:$resultats_bdd (ligne 157) : segments non reconnus [$resultats, bdd]
+  - param:$communaute_protocole_snmp (ligne 157) : segments non reconnus [$communaute, snmp]
+  - param:$ip_switch (ligne 192) : segments non reconnus [$ip]
+  - param:$communaute_protocole_snmp (ligne 192) : segments non reconnus [$communaute, snmp]
+  - @param:oid (ligne 20) : segments non reconnus [oid]
+  - @param:OID (ligne 64) : segments non reconnus [OID]
+  - @param:communaute_protocole_snmp (ligne 84) : segments non reconnus [snmp]
+  - @param:communaute_protocole_snmp (ligne 101) : segments non reconnus [snmp]
+  - @param:communaute_protocole_snmp (ligne 118) : segments non reconnus [snmp]
+  - @param:communaute_protocole_snmp (ligne 134) : segments non reconnus [snmp]
+  - @param:tab_0 (ligne 153) : segments non reconnus [0]
+  - @param:communaute_protocole_snmp (ligne 154) : segments non reconnus [snmp]
+  - @param:communaute_protocole_snmp (ligne 189) : segments non reconnus [snmp]
+OK : aucun chiffre détecté dans les noms
+Erreur : --check-globals n'est supporté que pour Python
+[IGNORÉ] --check-var : JS/TS uniquement
+
+=== Web_et_Reseau/Administration_Equipements/Consultation_SNMP/Projet-Netweb_2019/netweb1.1\utils\templates\affichage_resultats.php ===
+Accents manquants :
+  - param:$tableau_donnees (ligne 18) : donnees → données
+  - param:$tableau_donnees (ligne 32) : donnees → données
+  - param:$tableau_donnees (ligne 47) : donnees → données
+  - param:$tableau_donnees (ligne 73) : donnees → données
+  - @param:tableau_donnees (ligne 13) : donnees → données
+  - @param:tableau_donnees (ligne 29) : donnees → données
+  - @param:tableau_donnees (ligne 44) : donnees → données
+  - @param:tableau_donnees (ligne 71) : donnees → données
+
+Noms potentiellement cryptiques (à vérifier) :
+  - param:$tableau_donnees (ligne 18) : segments non reconnus [$tableau]
+  - param:$index_ligne (ligne 18) : segments non reconnus [$index]
+  - param:$index_debut (ligne 18) : segments non reconnus [$index]
+  - param:$index_fin (ligne 18) : segments non reconnus [$index]
+  - param:$tableau_donnees (ligne 32) : segments non reconnus [$tableau]
+  - param:$index_ligne (ligne 32) : segments non reconnus [$index]
+  - param:$tableau_donnees (ligne 47) : segments non reconnus [$tableau]
+  - param:$index_ligne (ligne 47) : segments non reconnus [$index]
+  - param:$tableau_donnees (ligne 73) : segments non reconnus [$tableau]
+OK : aucun chiffre détecté dans les noms
+Erreur : --check-globals n'est supporté que pour Python
+[IGNORÉ] --check-var : JS/TS uniquement
+
+=== Web_et_Reseau/Administration_Equipements/Consultation_SNMP/Projet-Netweb_2019/netweb1.1\utils\templates\formulaire.php ===
+Accents manquants :
+  - param:$entree_par_defaut (ligne 20) : defaut → défaut
+  - param:$stack_par_defaut (ligne 20) : defaut → défaut
+  - param:$port_debut_par_defaut (ligne 20) : defaut → défaut
+  - param:$port_fin_par_defaut (ligne 20) : defaut → défaut
+  - @param:entree_par_defaut (ligne 15) : defaut → défaut
+  - @param:stack_par_defaut (ligne 16) : defaut → défaut
+  - @param:port_debut_par_defaut (ligne 17) : defaut → défaut
+  - @param:port_fin_par_defaut (ligne 18) : defaut → défaut
+
+Noms potentiellement cryptiques (à vérifier) :
+  - param:$entree_par_defaut (ligne 20) : segments non reconnus [$entree]
+  - param:$stack_par_defaut (ligne 20) : segments non reconnus [$stack]
+  - param:$port_debut_par_defaut (ligne 20) : segments non reconnus [$port]
+  - param:$port_fin_par_defaut (ligne 20) : segments non reconnus [$port]
+OK : aucun chiffre détecté dans les noms
+Erreur : --check-globals n'est supporté que pour Python
+[IGNORÉ] --check-var : JS/TS uniquement
+
+=== Web_et_Reseau/Administration_Equipements/Consultation_SNMP/Projet-Netweb_2019/netweb1.1\utils\templates\structure_page.php ===
+Noms potentiellement cryptiques (à vérifier) :
+  - param:$title (ligne 22) : segments non reconnus [$title]
+  - param:$title (ligne 33) : segments non reconnus [$title]
+OK : aucun chiffre détecté dans les noms
+Erreur : --check-globals n'est supporté que pour Python
+[IGNORÉ] --check-var : JS/TS uniquement

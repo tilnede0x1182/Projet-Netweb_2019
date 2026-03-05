@@ -25,11 +25,11 @@ include 'utils/includes/config.php';
 /**
 	Execute les tests de l application.
 
-	@param communaute_cst Communaute SNMP pour les tests
+	@param communaute_protocole_snmp Communaute SNMP pour les tests
 */
-function tests($communaute_cst) {
-	$tmp = test_bdd();
-	enrichie_resultats_BDD_par_SNMP($tmp, $communaute_cst);
+function tests($communaute_protocole_snmp) {
+	$resultats_test = test_bdd();
+	enrichie_resultats_BDD_par_SNMP($resultats_test, $communaute_protocole_snmp);
 }
 
 /**

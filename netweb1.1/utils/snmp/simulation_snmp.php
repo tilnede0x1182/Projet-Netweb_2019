@@ -64,82 +64,82 @@ function simule_snmp($ip, $oid) {
 	@param OID Identifiant de l objet SNMP a interroger
 	@return string Valeur retournee par l equipement ou "Pas de reponse"
 */
-function renvoie_objet_snmp($ip, $communaute, $OID) {
-	// APPEL REEL SNMP (commente - pas d equipements disponibles)
-	// $res = @snmp2_get($ip, $communaute, $OID, 100, 3);
+function renvoie_objet_snmp($adresse_ip_equipement, $communaute_snmp, $identifiant_objet_snmp) {
+	// APPEL REEL SNMP (commente - pas d'équipements disponibles)
+	// $reponse_equipement = @snmp2_get($adresse_ip_equipement, $communaute_snmp, $identifiant_objet_snmp, 100, 3);
 
 	// SIMULATION pour portfolio
-	$res = simule_snmp($ip, $OID);
+	$reponse_equipement = simule_snmp($adresse_ip_equipement, $identifiant_objet_snmp);
 
-	if (!$res) $res = "Pas de reponse";
-	return $res;
+	if (!$reponse_equipement) $reponse_equipement = "Pas de reponse";
+	return $reponse_equipement;
 }
 
 /**
 	Retourne le VLAN attribue a un port de switch Avaya.
 
 	@param ip_switch Adresse IP du switch
-	@param num_switch Numero du switch dans le stack
-	@param port Numero du port
-	@param communaute_cst Communaute SNMP
+	@param numero_switch Numero du switch dans le stack
+	@param port_physique Numero du port
+	@param communaute_protocole_snmp Communaute SNMP
 	@return string Numero de VLAN ou "Pas de reponse"
 */
-function renvoie_VLAN($ip_switch, $num_switch, $port, $communaute_cst) {
-		if (!verifie_marque_avaya($ip_switch, $communaute_cst)) {
+function renvoie_VLAN($ip_switch, $numero_switch, $port_physique, $communaute_protocole_snmp) {
+		if (!verifie_marque_avaya($ip_switch, $communaute_protocole_snmp)) {
 			//echo("renvoie_VLAN : Attention, le switch demandé n'est pas de marque Avaya");
 			return "Pas de réponse";
 		}
-		return nettoie_res_snmp(renvoie_objet_snmp("$ip_switch", $communaute_cst, "1.0.8802.1.1.2.1.5.32962.1.2.1.1.1.".calcul_numero_port_snmp($num_switch, $port)));
+		return nettoie_res_snmp(renvoie_objet_snmp("$ip_switch", $communaute_protocole_snmp, "1.0.8802.1.1.2.1.5.32962.1.2.1.1.1.".calcul_numero_port_protocole_snmp($numero_switch, $port_physique)));
 	}
 
 /**
 	Retourne le status d un port de switch (up/down).
 
 	@param ip_switch Adresse IP du switch
-	@param num_switch Numero du switch dans le stack
-	@param port Numero du port
-	@param communaute_cst Communaute SNMP
+	@param numero_switch Numero du switch dans le stack
+	@param port_physique Numero du port
+	@param communaute_protocole_snmp Communaute SNMP
 	@return string Status du port (1=up, 2=down) ou "Pas de reponse"
 */
-function renvoie_status_port($ip_switch, $num_switch, $port, $communaute_cst) {
-		if (!verifie_marque_avaya($ip_switch, $communaute_cst)) {
+function renvoie_status_port($ip_switch, $numero_switch, $port_physique, $communaute_protocole_snmp) {
+		if (!verifie_marque_avaya($ip_switch, $communaute_protocole_snmp)) {
 			//echo("renvoie_VLAN : Attention, le switch demandé n'est pas de marque Avaya");
 			return "Pas de réponse";
 		}
-		return nettoie_res_snmp(renvoie_objet_snmp("$ip_switch", $communaute_cst, "1.3.6.1.2.1.2.2.1.8.".calcul_numero_port_snmp($num_switch, $port)));
+		return nettoie_res_snmp(renvoie_objet_snmp("$ip_switch", $communaute_protocole_snmp, "1.3.6.1.2.1.2.2.1.8.".calcul_numero_port_protocole_snmp($numero_switch, $port_physique)));
 	}
 
 /**
 	Retourne la vitesse d un port de switch en bps.
 
 	@param ip_switch Adresse IP du switch
-	@param num_switch Numero du switch dans le stack
-	@param port Numero du port
-	@param communaute_cst Communaute SNMP
+	@param numero_switch Numero du switch dans le stack
+	@param port_physique Numero du port
+	@param communaute_protocole_snmp Communaute SNMP
 	@return string Vitesse du port en bps ou "Pas de reponse"
 */
-function renvoie_vitesse_port($ip_switch, $num_switch, $port, $communaute_cst) {
-		if (!verifie_marque_avaya($ip_switch, $communaute_cst)) {
+function renvoie_vitesse_port($ip_switch, $numero_switch, $port_physique, $communaute_protocole_snmp) {
+		if (!verifie_marque_avaya($ip_switch, $communaute_protocole_snmp)) {
 			//echo("renvoie_VLAN : Attention, le switch demandé n'est pas de marque Avaya");
 			return "Pas de réponse";
 		}
-		$tmp = renvoie_objet_snmp("$ip_switch", $communaute_cst, "1.3.6.1.2.1.2.2.1.5.".calcul_numero_port_snmp($num_switch, $port));
-		return nettoie_res_snmp($tmp);
+		$reponse_snmp_brute = renvoie_objet_snmp("$ip_switch", $communaute_protocole_snmp, "1.3.6.1.2.1.2.2.1.5.".calcul_numero_port_protocole_snmp($numero_switch, $port_physique));
+		return nettoie_res_snmp($reponse_snmp_brute);
 	}
 
 /**
 	Retourne les informations de marque d un switch.
 
 	@param ip_switch Adresse IP du switch
-	@param communaute_cst Communaute SNMP
+	@param communaute_protocole_snmp Communaute SNMP
 	@return array Tableau contenant les informations de marque
 */
-function renvoie_marque_switch($ip_switch, $communaute_cst) {
-		$res = array();
-		for ($i = 2; $i < 9; $i++) {
-			array_push($res, renvoie_objet_snmp("$ip_switch", $communaute_cst, "1.0.8802.1.1.2.1.5.4795.1.2.$i.0"));
+function renvoie_marque_switch($ip_switch, $communaute_protocole_snmp) {
+		$infos_marque = array();
+		for ($index_oid = 2; $index_oid < 9; $index_oid++) {
+			array_push($infos_marque, renvoie_objet_snmp("$ip_switch", $communaute_protocole_snmp, "1.0.8802.1.1.2.1.5.4795.1.2.$index_oid.0"));
 		}
-		return $res;
+		return $infos_marque;
 	}
 
 // ==============================================================================
@@ -151,31 +151,31 @@ function renvoie_marque_switch($ip_switch, $communaute_cst) {
 	Ajoute le status, la vitesse et le VLAN pour chaque port.
 
 	@param tab_0 Tableau de resultats de la base de donnees
-	@param communaute_cst Communaute SNMP
+	@param communaute_protocole_snmp Communaute SNMP
 	@return array Tableau enrichi avec les donnees SNMP
 */
-function enrichie_resultats_BDD_par_SNMP($tab_0, $communaute_cst) {
-		$tab = decode_tab_mysql($tab_0);
-		$res = array();
-		$cmp = 0;
-		foreach ($tab as $i) {
-			$tmp1 = $i[0];
-			$tmp2 = $i[1];
+function enrichie_resultats_BDD_par_SNMP($resultats_bdd, $communaute_protocole_snmp) {
+		$resultats_decodes = decode_tab_mysql($resultats_bdd);
+		$resultats_enrichis = array();
+		$index_equipement = 0;
+		foreach ($resultats_decodes as $equipement_decode) {
+			$colonnes_entetes = $equipement_decode[0];
+			$colonnes_valeurs = $equipement_decode[1];
 
-			$stk = donne_stack($tab_0[$cmp]['Port']);
-			$port = donne_port($tab_0[$cmp]['Port']);
-			if ($stk && $port) {
-				array_push($tmp1, "Status du port");
-				array_push($tmp2, renvoie_status_port("10.149.254.".$stk, $port[0], $port[1], $communaute_cst));
-				array_push($tmp1, "Vitesse du port");
-				array_push($tmp2, formate_vitesse_port(renvoie_vitesse_port("10.149.254.".$stk, $port[0], $port[1], $communaute_cst)));
-				array_push($tmp1, "VLAN attribué à ce port");
-				array_push($tmp2,  renvoie_VLAN("10.149.254.".$stk, $port[0], $port[1], $communaute_cst));
+			$numero_stack = donne_stack($resultats_bdd[$index_equipement]['Port']);
+			$numeros_port = donne_port($resultats_bdd[$index_equipement]['Port']);
+			if ($numero_stack && $numeros_port) {
+				array_push($colonnes_entetes, "Status du port");
+				array_push($colonnes_valeurs, renvoie_status_port("10.149.254.".$numero_stack, $numeros_port[0], $numeros_port[1], $communaute_protocole_snmp));
+				array_push($colonnes_entetes, "Vitesse du port");
+				array_push($colonnes_valeurs, formate_vitesse_port(renvoie_vitesse_port("10.149.254.".$numero_stack, $numeros_port[0], $numeros_port[1], $communaute_protocole_snmp)));
+				array_push($colonnes_entetes, "VLAN attribue a ce port");
+				array_push($colonnes_valeurs, renvoie_VLAN("10.149.254.".$numero_stack, $numeros_port[0], $numeros_port[1], $communaute_protocole_snmp));
 			}
-			array_push($res, array($tmp1, $tmp2));
-			$cmp = $cmp+1;
+			array_push($resultats_enrichis, array($colonnes_entetes, $colonnes_valeurs));
+			$index_equipement = $index_equipement + 1;
 		}
-		return $res;
+		return $resultats_enrichis;
 	}
 
 // ==============================================================================
@@ -186,16 +186,16 @@ function enrichie_resultats_BDD_par_SNMP($tab_0, $communaute_cst) {
 	Verifie si un switch est de marque Avaya.
 
 	@param ip_switch Adresse IP du switch
-	@param communaute_cst Communaute SNMP
+	@param communaute_protocole_snmp Communaute SNMP
 	@return bool true si le switch est Avaya, false sinon
 */
-function verifie_marque_avaya($ip_switch, $communaute_cst) {
-		$tmp = renvoie_marque_switch ($ip_switch, $communaute_cst);
-		$str_0 = "";
-		foreach ($tmp as $i) {
-			$str_0 = $str_0.$i;
+function verifie_marque_avaya($ip_switch, $communaute_protocole_snmp) {
+		$infos_marque = renvoie_marque_switch($ip_switch, $communaute_protocole_snmp);
+		$chaine_marque_complete = "";
+		foreach ($infos_marque as $fragment_marque) {
+			$chaine_marque_complete = $chaine_marque_complete . $fragment_marque;
 		}
-		if (str_contains($str_0, "Avaya")) return true;
+		if (str_contains($chaine_marque_complete, "Avaya")) return true;
 		else return false;
 	}
 ?>

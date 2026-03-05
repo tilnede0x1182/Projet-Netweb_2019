@@ -10,10 +10,10 @@
 /**
 	Affiche les elements d un tableau sur des lignes separees.
 
-	@param tab Tableau a afficher
+	@param tableau_elements Tableau a afficher
 */
-function aff_tab($tab) {
-	foreach ($tab as $element) {
+function aff_tab($tableau_elements) {
+	foreach ($tableau_elements as $element) {
 		echo($element."\n");
 	}
 }
@@ -21,10 +21,10 @@ function aff_tab($tab) {
 /**
 	Affiche les elements d un tableau a deux dimensions.
 
-	@param tab Tableau 2D a afficher
+	@param tableau_2_dimensions Tableau 2D a afficher
 */
-function aff_tab_2_dimensions($tab) {
-	foreach ($tab as $ligne) {
+function aff_tab_2_dimensions($tableau_2_dimensions) {
+	foreach ($tableau_2_dimensions as $ligne) {
 		foreach ($ligne as $element) {
 			echo($element."\n");
 		}
@@ -34,10 +34,10 @@ function aff_tab_2_dimensions($tab) {
 /**
 	Affiche un tableau de resultats MySQL avec cles et valeurs.
 
-	@param tab Tableau associatif de resultats MySQL
+	@param resultats_mysql Tableau associatif de resultats MySQL
 */
-function aff_tab_res_mysql($tab) {
-	foreach ($tab as $ligne) {
+function aff_tab_res_mysql($resultats_mysql) {
+	foreach ($resultats_mysql as $ligne) {
 		foreach ($ligne as $cle => $valeur) {
 			echo($cle." : ".$valeur."\n");
 		}
@@ -49,8 +49,8 @@ function aff_tab_res_mysql($tab) {
 
 	@param tmp Valeur booleenne a afficher
 */
-function aff_bool($tmp) {
-	if ($tmp) echo ("1\n");
+function aff_bool($resultat_verification) {
+	if ($resultat_verification) echo ("1\n");
 	else echo ("0\n");
 }
 
@@ -64,24 +64,24 @@ function aff_bool($tmp) {
 	@param tmp Reponse SNMP brute (ex: "INTEGER: 100")
 	@return string Valeur numerique extraite ou "Pas de reponse"
 */
-function nettoie_res_snmp($tmp) {
-	if (strcmp($tmp, "Pas de reponse")==0) return $tmp;
-	$tmp_len = strlen($tmp);
-	$idx = 0;
-	if (str_contains($tmp, ":")) {
-		while ($idx < $tmp_len && strcmp(substr($tmp, $idx, 1), ":")!=0) {
-			$idx = $idx+1;
+function nettoie_res_snmp($reponse_snmp) {
+	if (strcmp($reponse_snmp, "Pas de reponse")==0) return $reponse_snmp;
+	$longueur_reponse = strlen($reponse_snmp);
+	$index_caractere_reponse = 0;
+	if (str_contains($reponse_snmp, ":")) {
+		while ($index_caractere_reponse < $longueur_reponse && strcmp(substr($reponse_snmp, $index_caractere_reponse, 1), ":")!=0) {
+			$index_caractere_reponse = $index_caractere_reponse + 1;
 		}
-		$idx = $idx+1;
+		$index_caractere_reponse = $index_caractere_reponse + 1;
 	}
-	$res = "";
-	while ($idx < $tmp_len) {
-		if (is_numeric(substr($tmp, $idx, 1))) {
-			$res = $res.substr($tmp, $idx, 1);
+	$valeur_extraite = "";
+	while ($index_caractere_reponse < $longueur_reponse) {
+		if (is_numeric(substr($reponse_snmp, $index_caractere_reponse, 1))) {
+			$valeur_extraite = $valeur_extraite . substr($reponse_snmp, $index_caractere_reponse, 1);
 		}
-		$idx = $idx+1;
+		$index_caractere_reponse = $index_caractere_reponse + 1;
 	}
-	return $res;
+	return $valeur_extraite;
 }
 
 // ==============================================================================
@@ -95,16 +95,15 @@ function nettoie_res_snmp($tmp) {
 	@param nbr_zeros Longueur totale souhaitee
 	@return string Nombre formate avec zeros
 */
-function remplit_nombre_zeros($nombre, $nbr_zeros) {
-	$longueur_cible = $nbr_zeros;
-	$tmp = "".$nombre;
-	$tmplen = strlen($tmp);
+function remplit_nombre_zeros($nombre, $longueur_totale) {
+	$nombre_formate = "" . $nombre;
+	$longueur_actuelle = strlen($nombre_formate);
 
-	while ($tmplen < $longueur_cible) {
-		$tmp = "0".$tmp;
-		$tmplen = strlen($tmp);
+	while ($longueur_actuelle < $longueur_totale) {
+		$nombre_formate = "0" . $nombre_formate;
+		$longueur_actuelle = strlen($nombre_formate);
 	}
-	return $tmp;
+	return $nombre_formate;
 }
 
 /**
@@ -113,14 +112,14 @@ function remplit_nombre_zeros($nombre, $nbr_zeros) {
 	@param vitesse Vitesse en bps
 	@return string Vitesse formatee (ex: "100 mo")
 */
-function formate_vitesse_port($vitesse) {
-	$res = $vitesse;
-	if (strlen($vitesse)>0) {
-		if (strcmp($vitesse, "10000000")==0) $res = "10 mo";
-		if (strcmp($vitesse, "100000000")==0) $res = "100 mo";
-		if (strcmp($vitesse, "1000000000")==0) $res = "1 go";
+function formate_vitesse_port($vitesse_bits_par_seconde) {
+	$vitesse_formatee = $vitesse_bits_par_seconde;
+	if (strlen($vitesse_bits_par_seconde) > 0) {
+		if (strcmp($vitesse_bits_par_seconde, "10000000") == 0) $vitesse_formatee = "10 mo";
+		if (strcmp($vitesse_bits_par_seconde, "100000000") == 0) $vitesse_formatee = "100 mo";
+		if (strcmp($vitesse_bits_par_seconde, "1000000000") == 0) $vitesse_formatee = "1 go";
 	}
-	return $res;
+	return $vitesse_formatee;
 }
 
 // ==============================================================================
@@ -135,12 +134,12 @@ function formate_vitesse_port($vitesse) {
 	@return bool true si trouve, false sinon
 */
 if (!function_exists('str_contains')) {
-	function str_contains($chaine, $chaine_a_chercher) {
-		$len_recherche = strlen($chaine_a_chercher);
-		$len_chaine = strlen($chaine);
+	function str_contains($chaine, $sous_chaine) {
+		$longueur_sous_chaine = strlen($sous_chaine);
+		$longueur_chaine = strlen($chaine);
 
-		for ($idx = 0; $idx <= $len_chaine - $len_recherche; $idx++) {
-			if (strcmp(substr($chaine, $idx, $len_recherche), $chaine_a_chercher)==0) return true;
+		for ($index_debut_comparaison = 0; $index_debut_comparaison <= $longueur_chaine - $longueur_sous_chaine; $index_debut_comparaison++) {
+			if (strcmp(substr($chaine, $index_debut_comparaison, $longueur_sous_chaine), $sous_chaine) == 0) return true;
 		}
 		return false;
 	}

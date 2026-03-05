@@ -57,4 +57,4 @@ Ce projet est une application web de consultation d'équipements réseau via SNM
 
 ## Identifiants de test
 
-Les équipements générés par le seed sont disponibles dans `netweb1.1/data/users.txt`.
+Les équipements générés par le seed sont disponibles dans `netweb1.1/data/données_de_test.txt` tester.

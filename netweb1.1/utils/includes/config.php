@@ -14,12 +14,12 @@ $root_url = '/netweb/';
 $titre_page = "Informations sur les equipements informatiques";
 
 // Connexion a la base de donnees
-$bdd_adresse_hote = "localhost";
-$bdd_user = "tilnede0x1182";
-$bdd_mdp = "tilnede0x1182";
-$bdd_base = "netweb1.1";
+$adresse_hote_base_de_donnees = "localhost";
+$utilisateur_base_de_donnees = "tilnede0x1182";
+$mot_de_passe_base_de_donnees = "tilnede0x1182";
+$nom_base_de_donnees = "netweb1.1";
 
 // Configuration SNMP
-$communaute_cst = "public";
+$communaute_protocole_snmp = "public";
 
 ?>
