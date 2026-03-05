@@ -8,17 +8,12 @@
 - Noms de fichiers explicites (Action.php → RechercheEquipement.php, etc.)
 - Seed et create_tables.sql pour données de test
 - README mis à jour avec instructions d'installation
-
-## Ce qui n'est plus pertinent
-
-- Bug strcmp vitesse : SNMP simulé, les valeurs sont générées correctement
-- Bug SNMP "Pas de réponse" : Simulation retourne toujours une valeur
-- Sécurité communauté SNMP : Pas de vraies requêtes SNMP
-- Filtrage IP SNMP : Simulation, pas d'interrogation réseau
+- Requêtes préparées (mysqli_prepare) pour éviter injection SQL
+- Factorisation code commun dans fonctions_requetes.php (DRY)
+- Renommage variables explicites ($stmt → $requete_preparee, $bdd → $nom_base_de_donnees, etc.)
+- Documentation Javadoc avec @param type $nom sur toutes les fonctions
+- Favicon ajouté
 
 ## Ce qui reste à faire (optionnel)
 
-- Injection SQL : Les requêtes utilisent la concaténation, pas de requêtes préparées (priorité haute si production)
-- DRY Action/Action2 : 90% de code dupliqué entre RechercheEquipement.php et RecherchePort.php
-- Regrouper fichiers utils : fonctions_affichage.php et fonctions_snmp.php pourraient être fusionnés
-- Identifiants MySQL en clair : config.php contient user/password en dur (acceptable pour portfolio)
+- Identifiants MySQL en clair : config.php contient user/password en dur → utiliser .env
