@@ -12,10 +12,10 @@
 	- Recherche par IP, nom, inventaire ou MAC
 	- Recherche par stack et port
 
-	@param entree_par_defaut Valeur par defaut du champ de recherche principal
-	@param stack_par_defaut Valeur par defaut du numero de stack
-	@param port_debut_par_defaut Valeur par defaut du premier numero de port
-	@param port_fin_par_defaut Valeur par defaut du second numero de port
+	@param string $entree_par_defaut Valeur par defaut du champ de recherche principal
+	@param string $stack_par_defaut Valeur par defaut du numero de stack
+	@param string $port_debut_par_defaut Valeur par defaut du premier numero de port
+	@param string $port_fin_par_defaut Valeur par defaut du second numero de port
 */
 function affiche_formulaire($entree_par_defaut, $stack_par_defaut, $port_debut_par_defaut, $port_fin_par_defaut) {
 	global $root_url;

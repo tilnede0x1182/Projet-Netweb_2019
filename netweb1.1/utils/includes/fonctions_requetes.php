@@ -11,9 +11,9 @@
 /**
 	Execute une requete preparee pour rechercher un equipement par IP/nom/MAC/inventaire.
 
-	@param connexion mysqli Connexion MySQL active
-	@param nom_base_de_donnees string Nom de la base de donnees
-	@param entree_user string Critere de recherche utilisateur
+	@param mysqli $connexion Connexion MySQL active
+	@param string $nom_base_de_donnees Nom de la base de donnees
+	@param string $entree_user Critere de recherche utilisateur
 	@return array Resultats de la requete
 */
 function recherche_equipement_prepare($connexion, $nom_base_de_donnees, $entree_user) {
@@ -55,9 +55,9 @@ function recherche_equipement_prepare($connexion, $nom_base_de_donnees, $entree_
 
 	@param connexion mysqli Connexion MySQL active
 	@param nom_base_de_donnees string Nom de la base de donnees
-	@param numero_stack string Numero de stack
-	@param port_debut string Premier numero de port
-	@param port_fin string Second numero de port
+	@param string $numero_stack Numero de stack
+	@param string $port_debut Premier numero de port
+	@param string $port_fin Second numero de port
 	@return array Resultats de la requete
 */
 function recherche_port_prepare($connexion, $nom_base_de_donnees, $numero_stack, $port_debut, $port_fin) {
@@ -105,10 +105,10 @@ function recherche_port_prepare($connexion, $nom_base_de_donnees, $numero_stack,
 /**
 	Ouvre une connexion MySQL.
 
-	@param bdd_adresse_hote string Adresse du serveur MySQL
-	@param bdd_user string Utilisateur MySQL
-	@param bdd_mdp string Mot de passe MySQL
-	@param bdd_base string Nom de la base de donnees
+	@param string $bdd_adresse_hote Adresse du serveur MySQL
+	@param string $bdd_user Utilisateur MySQL
+	@param string $bdd_mdp Mot de passe MySQL
+	@param string $bdd_base Nom de la base de donnees
 	@return mysqli Connexion MySQL
 */
 function ouvrir_connexion($bdd_adresse_hote, $bdd_user, $bdd_mdp, $bdd_base) {
@@ -155,10 +155,10 @@ function recuperer_valeurs_formulaire() {
 /**
 	Affiche la page complete avec formulaire et resultats.
 
-	@param titre_page string Titre de la page HTML
-	@param valeurs_formulaire array Valeurs du formulaire
-	@param resultats_bdd array Resultats de la requete BDD
-	@param communaute_protocole_snmp string Communaute SNMP
+	@param string $titre_page Titre de la page HTML
+	@param array $valeurs_formulaire Valeurs du formulaire
+	@param array $resultats_bdd Resultats de la requete BDD
+	@param string $communaute_protocole_snmp Communaute SNMP
 */
 function afficher_page_resultats($titre_page, $valeurs_formulaire, $resultats_bdd, $communaute_protocole_snmp) {
 	affiche_debut_page_html();

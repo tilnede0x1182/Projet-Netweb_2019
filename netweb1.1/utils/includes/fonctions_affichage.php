@@ -10,7 +10,7 @@
 /**
 	Affiche les elements d un tableau sur des lignes separees.
 
-	@param tableau_elements Tableau a afficher
+	@param array $tableau_elements Tableau a afficher
 */
 function aff_tab($tableau_elements) {
 	foreach ($tableau_elements as $element) {
@@ -21,7 +21,7 @@ function aff_tab($tableau_elements) {
 /**
 	Affiche les elements d un tableau a deux dimensions.
 
-	@param tableau_2_dimensions Tableau 2D a afficher
+	@param array $tableau_2_dimensions Tableau 2D a afficher
 */
 function aff_tab_2_dimensions($tableau_2_dimensions) {
 	foreach ($tableau_2_dimensions as $ligne) {
@@ -34,7 +34,7 @@ function aff_tab_2_dimensions($tableau_2_dimensions) {
 /**
 	Affiche un tableau de resultats MySQL avec cles et valeurs.
 
-	@param resultats_mysql Tableau associatif de resultats MySQL
+	@param array $resultats_mysql Tableau associatif de resultats MySQL
 */
 function aff_tab_res_mysql($resultats_mysql) {
 	foreach ($resultats_mysql as $ligne) {
@@ -47,7 +47,7 @@ function aff_tab_res_mysql($resultats_mysql) {
 /**
 	Affiche un booleen sous forme de 1 ou 0.
 
-	@param tmp Valeur booleenne a afficher
+	@param bool $resultat_verification Valeur booleenne a afficher
 */
 function aff_bool($resultat_verification) {
 	if ($resultat_verification) echo ("1\n");
@@ -61,7 +61,7 @@ function aff_bool($resultat_verification) {
 /**
 	Nettoie une reponse SNMP pour extraire uniquement la valeur numerique.
 
-	@param tmp Reponse SNMP brute (ex: "INTEGER: 100")
+	@param string $reponse_snmp Reponse SNMP brute (ex: "INTEGER: 100")
 	@return string Valeur numerique extraite ou "Pas de reponse"
 */
 function nettoie_res_snmp($reponse_snmp) {
@@ -91,8 +91,8 @@ function nettoie_res_snmp($reponse_snmp) {
 /**
 	Complete un nombre avec des zeros a gauche.
 
-	@param nombre Nombre a formater
-	@param nbr_zeros Longueur totale souhaitee
+	@param int $nombre Nombre a formater
+	@param int $longueur_totale Longueur totale souhaitee
 	@return string Nombre formate avec zeros
 */
 function remplit_nombre_zeros($nombre, $longueur_totale) {
@@ -109,7 +109,7 @@ function remplit_nombre_zeros($nombre, $longueur_totale) {
 /**
 	Formate une vitesse de port en unites lisibles.
 
-	@param vitesse Vitesse en bps
+	@param string $vitesse_bits_par_seconde Vitesse en bps
 	@return string Vitesse formatee (ex: "100 mo")
 */
 function formate_vitesse_port($vitesse_bits_par_seconde) {
@@ -129,8 +129,8 @@ function formate_vitesse_port($vitesse_bits_par_seconde) {
 /**
 	Polyfill pour str_contains (PHP < 8.0).
 
-	@param chaine Chaine dans laquelle chercher
-	@param chaine_a_chercher Sous-chaine a trouver
+	@param string $chaine Chaine dans laquelle chercher
+	@param string $sous_chaine Sous-chaine a trouver
 	@return bool true si trouve, false sinon
 */
 if (!function_exists('str_contains')) {

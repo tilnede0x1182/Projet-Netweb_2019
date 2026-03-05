@@ -36,7 +36,7 @@ $EQUIPEMENTS = [
 /**
 	Extrait les numeros stack/port du format switchport.
 
-	@param switchport string Format stk-254XXX[YY/ZZ]
+	@param string $switchport Format stk-254XXX[YY/ZZ]
 	@return array [stack, port1, port2]
 */
 function extraire_stack_port($switchport) {
@@ -50,7 +50,7 @@ function extraire_stack_port($switchport) {
 /**
 	Genere le contenu du fichier donnees_de_test.txt.
 
-	@param equipements array Liste des equipements
+	@param array $equipements Liste des equipements
 	@return string Contenu du fichier
 */
 function generer_fichier_test($equipements) {

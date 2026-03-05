@@ -17,7 +17,7 @@ function affiche_debut_page_html() {
 /**
 	Affiche le titre et le lien CSS de la page.
 
-	@param title Titre de la page
+	@param string $title Titre de la page
 */
 function affiche_titre_page_html($title) {
 	echo "\t\t".'<title>'.$title.'</title>'."\n";
@@ -28,7 +28,7 @@ function affiche_titre_page_html($title) {
 /**
 	Affiche la section head complete avec titre et ouverture du body.
 
-	@param title Titre de la page
+	@param string title Titre de la page
 */
 function affiche_head_page_html($title) {
 	echo "\t".'<head>'."\n";

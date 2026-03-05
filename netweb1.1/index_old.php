@@ -25,7 +25,7 @@ include 'utils/includes/config.php';
 /**
 	Execute les tests de l application.
 
-	@param communaute_protocole_snmp Communaute SNMP pour les tests
+	@param string $communaute_protocole_snmp Communaute SNMP pour les tests
 */
 function tests($communaute_protocole_snmp) {
 	$resultats_test = test_bdd();
@@ -35,7 +35,7 @@ function tests($communaute_protocole_snmp) {
 /**
 	Affiche la page principale avec le formulaire de recherche.
 
-	@param titre_page Titre de la page HTML
+	@param string $titre_page Titre de la page HTML
 */
 function main($titre_page) {
 	affiche_debut_page_html();

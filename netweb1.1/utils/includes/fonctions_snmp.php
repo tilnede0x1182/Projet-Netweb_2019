@@ -11,8 +11,8 @@
 	Calcule le numero de port SNMP en fonction du switch et du port physique.
 	Les switchs empiles ont des offsets de 64 par switch.
 
-	@param numero_switch Numero du switch dans le stack (1-4)
-	@param port Numero du port physique (0-50)
+	@param int $numero_switch Numero du switch dans le stack (1-4)
+	@param int $port_physique Numero du port physique (0-50)
 	@return int Numero de port SNMP calcule
 */
 function calcul_numero_port_protocole_snmp($numero_switch, $port_physique) {
@@ -45,7 +45,7 @@ function calcul_numero_port_protocole_snmp($numero_switch, $port_physique) {
 /**
 	Verifie si le format du port respecte le standard stk-254*.
 
-	@param port_format_stack Chaine du port au format stack
+	@param string $port_format_stack Chaine du port au format stack
 	@return bool true si format valide, false sinon
 */
 function verife_format_stack_standard($port_format_stack) {
@@ -56,7 +56,7 @@ function verife_format_stack_standard($port_format_stack) {
 /**
 	Extrait le numero de stack depuis une chaine au format stk-254XXX.
 
-	@param port_format_stack Chaine du port au format stack
+	@param string port_format_stack Chaine du port au format stack
 	@return int Numero du stack ou -1 si format invalide
 */
 function donne_stack($port_format_stack) {
@@ -71,7 +71,7 @@ function donne_stack($port_format_stack) {
 /**
 	Extrait les numeros de switch et port depuis une chaine au format stack.
 
-	@param port_format_stack Chaine du port au format stk-254XXX-YY/ZZ
+	@param string port_format_stack Chaine du port au format stk-254XXX-YY/ZZ
 	@return array Tableau [num_switch, num_port] ou tableau vide si invalide
 */
 function donne_port($port_format_stack) {
@@ -92,7 +92,7 @@ function donne_port($port_format_stack) {
 	Decode un tableau de resultats MySQL en format exploitable.
 	Separe les cles et valeurs en deux tableaux distincts.
 
-	@param tab Tableau de resultats MySQL
+	@param array $tableau_mysql Tableau de resultats MySQL
 	@return array Tableau decode avec structure [[cles], [valeurs]]
 */
 function decode_tab_mysql($tableau_mysql) {
