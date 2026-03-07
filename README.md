@@ -1,6 +1,15 @@
-# Netweb – Consultation d'équipements réseau
+# Netweb1.1 – Consultation d'équipements réseau
 
-Ce projet est une application web de consultation d'équipements réseau via SNMP et d'une base de donnée d'informations sur les IP d'un réseau privé dans une organisation. Le projet a été réalisé lors d'un stage puis refactoré afin d'ajouter des données fictives pour pouvoir tester le projet. Il permet d'interroger une base de données MySQL contenant des informations sur des équipements réseau (switches) et d'enrichir les résultats avec des données SNMP (statut de port, vitesse, VLAN). Je l'ai refactoré afin de moderniser la structure du code (architecture MVC), migrer vers mysqli (PHP 7+) et ajouter une simulation SNMP pour fonctionner sans infrastructure réseau réelle.
+Netweb 1.1 est une application web de consultation d’équipements réseau via SNMP et d’une base de données d’informations sur les IP d’un réseau privé d’organisation.
+Le projet a été réalisé lors d’un stage pour enrichir une application existante (Netweb) en ajoutant la capacité d’obtenir des informations sur les switches, en plus des informations disponibles en base de données sur les équipements réseau.
+
+Le travail a consisté à recréer la partie consultation de la base de données puis à l’enrichir avec des données issues des switches.
+
+Par la suite,j'ai refactoré le porejt pour ajouter des données fictives permettant de tester l’application.
+
+L’application interroge une base MySQL contenant des informations sur les équipements réseau (switches) et enrichit les résultats avec des données SNMP (statut de port, vitesse, VLAN).
+
+Un refactoring supplémentaire a permis de moderniser la structure du code (architecture MVC), de migrer vers mysqli (PHP 7+) et d’ajouter une simulation SNMP afin que l’application puisse fonctionner sans infrastructure réseau réelle.
 
 ## Fonctionnalités
 
